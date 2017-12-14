@@ -1,0 +1,7 @@
+---
+- config:
+    - testset: "Test info endpoint"
+
+- test:
+    - name: "Basic smoketest of info endpoint"
+    - url: "/v2/info"
