@@ -11,6 +11,7 @@
 - test:
     - generator_binds: {cf_username: cf_username, cf_password: cf_password, cf_client_id: cf_client_id, cf_login_url: cf_login_url, cf_api_url: cf_api_url}
     - name: "Auth"
+    - group: "get_token"
     - url: {template: "https://$cf_login_url/oauth/token?username=$cf_username&password=$cf_password&client_id=$cf_client_id&grant_type=password&response_type=token"}
     - method: "POST"
     - headers: {'Content-Type': 'application/json', 'Authorization': 'Basic Y2Y6'}
