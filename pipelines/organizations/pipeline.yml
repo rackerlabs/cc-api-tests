@@ -1,0 +1,20 @@
+resources:
+- name: cc-api-tests
+  type: git
+  source:
+    branch: master
+    private_key: ((cc_api_tests_priv_key))
+    uri: https://github.com/rackerlabs/cc-api-tests.git
+
+jobs:
+- name: auth-with-uaa
+  plan:
+  - get: cc-api-tests
+  - task: auth
+    file: cc-api-tests/tasks/auth/task.yml
+    params:
+      CF_USERNAME: ((CF_USERNAME))
+      CF_PASSWORD: ((CF_PASSWORD))
+      CF_CLIENT_ID: ((CF_CLIENT_ID))
+      CF_LOGIN_URL: ((CF_LOGIN_URL))
+      CF_API_URL: ((CF_API_URL))

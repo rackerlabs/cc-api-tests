@@ -1,8 +1,0 @@
----
-- config:
-    - testset: "Info Tests"
-
-- test:
-    - name: "Basic smoketest of info endpoint"
-    - group: "get_info"
-    - url: "/v2/info"

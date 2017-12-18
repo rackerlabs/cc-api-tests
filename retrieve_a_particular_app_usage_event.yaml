@@ -1,0 +1,14 @@
+---
+- import_begin: "auth.yaml"
+- import_begin: "list_all_app_usage_events.yaml"
+- config:
+    - testset: "API"
+    - generators:
+        - 'cf_api_url': {type: 'env_variable', variable_name: 'CF_API_URL'}
+
+- test:
+    - generator_binds: {cf_api_url: cf_api_url}
+    - name: "Retrieve a Particular App Usage Event"
+    - url: {template: "https://$cf_api_url/v2/app_usage_events/$global_cf_guid"}
+    - method: "GET"
+    - headers: {template: {'Content-Type': 'application/json', 'Authorization': 'Bearer $global_bearer_token'}}
