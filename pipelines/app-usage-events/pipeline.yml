@@ -36,6 +36,7 @@ jobs:
   plan:
   - get: keyval
     trigger: true
-    passed: auth-with-uaa
+    passed:
+    - auth-with-uaa
   - task: list-all-app-usage-events
     file: cc-api-tests/tasks/list_all_app_usage_event/task.yml
