@@ -10,6 +10,7 @@ jobs:
 - name: auth-with-uaa
   plan:
   - get: cc-api-tests
+    trigger: true
   - task: auth
     file: cc-api-tests/tasks/auth/task.yml
     params:
