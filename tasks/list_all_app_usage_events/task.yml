@@ -9,15 +9,7 @@ image_resource:
 
 inputs:
   - name: cc-api-tests
-outputs:
-  - name: keyvalout
+  - name: keyval
 
 run:
-  path: cc-api-tests/tasks/auth/task.sh
-
-params:
-  CF_USERNAME:
-  CF_PASSWORD:
-  CF_CLIENT_ID:
-  CF_LOGIN_URL:
-  CF_API_URL:
+  path: cc-api-tests/tasks/list_all_app_usage_events/task.sh
