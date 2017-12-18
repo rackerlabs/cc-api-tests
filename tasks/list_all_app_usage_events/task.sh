@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 
-props="${ROOT_FOLDER}/keyval/keyval.properties"
+props="keyval/keyval.properties"
 if [ -f "$props" ]
 then
   echo "Reading passed key values"
