@@ -30,4 +30,4 @@ jobs:
       CF_API_URL: ((CF_API_URL))
   - put: keyval
     params:
-      file: keyval.properties
+      file: keyvalout/keyval.properties

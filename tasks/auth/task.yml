@@ -4,8 +4,7 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: python
-    tag: '2-alpine'
+    repository: thoom/pyresttest
 
 inputs:
   - name: cc-api-tests
