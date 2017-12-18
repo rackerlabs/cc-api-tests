@@ -34,6 +34,7 @@ jobs:
 
 - name: list-all-app-usage-events
   plan:
+  - get: cc-api-tests
   - get: keyval
     trigger: true
     passed:
