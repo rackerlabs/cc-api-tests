@@ -5,6 +5,7 @@ function write_env_vars_to_file () (
     while IFS='=' read -r name value ; do
 	if [[ $name == 'CF_'* ]]; then
 	    echo "Adding: ${name}"
+	    echo "${name}=${value}" >> "$props"
 	fi
     done < <(env)
     )
