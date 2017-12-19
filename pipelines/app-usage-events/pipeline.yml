@@ -24,10 +24,10 @@ jobs:
     params:
       USERNAME: ((USERNAME))
       PASSWORD: ((PASSWORD))
-      CLIENT_ID: (CLIENT_ID))
+      CLIENT_ID: ((CLIENT_ID))
       LOGIN_URL: ((LOGIN_URL))
       CF_API_URL: ((CF_API_URL))
-  - put: cc-api-tests-put-bucket
+  - put: cc-api-tests-bucket
     params:
       file: cc-api-tests-put-bucket/app-usage-events.txt
 
