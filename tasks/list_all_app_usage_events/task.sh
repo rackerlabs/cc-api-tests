@@ -9,10 +9,9 @@ then
   do
     if [ ! -z "$var" ]
     then
-      echo "Adding: $var"
       export "$var"
     fi
   done < "$props"
 fi
 
-pyresttest https://$CF_API_URL cc-api-tests/tasks/list_all_app_usage_events/test.yml
+pyresttest https://$CF_API_URL --print-bodies=true cc-api-tests/tasks/list_all_app_usage_events/test.yml
