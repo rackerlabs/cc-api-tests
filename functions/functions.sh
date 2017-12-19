@@ -20,7 +20,7 @@ function read_env_vars_from_file () (
 	do
 	    if [ ! -z "$var" ]
 	    then
-		export "$var"
+		echo "export $var"
 	    fi
 	done < "$props"
     fi
