@@ -12,3 +12,6 @@ inputs:
 
 run:
   path: cc-api-tests/tasks/retrieve_a_particular_app_usage_event/task.sh
+
+params:
+  PIPELINE:

@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eu
 
-props="cc-api-tests-bucket/app-usage-events.txt"
+props="cc-api-tests-bucket/${PIPELINE}.txt"
 if [ -f "$props" ]
 then
     while IFS= read -r var

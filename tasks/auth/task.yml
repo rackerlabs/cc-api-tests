@@ -20,3 +20,4 @@ params:
   CLIENT_ID:
   LOGIN_URL:
   CF_API_URL:
+  PIPELINE:

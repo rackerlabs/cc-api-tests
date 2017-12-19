@@ -14,3 +14,6 @@ outputs:
 
 run:
   path: cc-api-tests/tasks/list_all_app_usage_events/task.sh
+
+params:
+  PIPELINE:

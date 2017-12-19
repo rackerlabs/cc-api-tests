@@ -27,6 +27,7 @@ jobs:
       CLIENT_ID: ((CLIENT_ID))
       LOGIN_URL: ((LOGIN_URL))
       CF_API_URL: ((CF_API_URL))
+      PIPELINE: ((PIPELINE))
   - put: cc-api-tests-bucket
     params:
       file: cc-api-tests-put-bucket/app-usage-events.txt
@@ -40,6 +41,8 @@ jobs:
     - auth-with-uaa
   - task: list-all-app-usage-events
     file: cc-api-tests/tasks/list_all_app_usage_events/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
   - put: cc-api-tests-bucket
     params:
       file: cc-api-tests-put-bucket/app-usage-events.txt
@@ -53,3 +56,5 @@ jobs:
     - list-all-app-usage-events
   - task: retrieve_a_particular_app_usage_event
     file: cc-api-tests/tasks/retrieve_a_particular_app_usage_event/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
