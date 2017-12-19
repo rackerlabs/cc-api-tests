@@ -9,7 +9,7 @@ resources:
   type: s3
   source:
     bucket: cc-api-tests.atc.bubbleup.club
-    region: us-west-2
+    region_name: us-west-2
     versioned_file: app-usage-events.txt
 
 jobs:
