@@ -40,3 +40,6 @@ jobs:
     - auth-with-uaa
   - task: list-all-app-usage-events
     file: cc-api-tests/tasks/list_all_app_usage_events/task.yml
+  - put: cc-api-tests-bucket
+    params:
+      file: cc-api-tests-bucket/app-usage-events.txt

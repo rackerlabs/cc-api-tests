@@ -14,4 +14,5 @@ then
   done < "$props"
 fi
 
-pyresttest https://$CF_API_URL --print-bodies=true cc-api-tests/tasks/list_all_app_usage_events/test.yml
+export CF_APP_USAGE_EVENT_GUID=$(pyresttest --print-bodies=true https://$CF_API_URL cc-api-tests/tasks/list_all_app_usage_events/test.yml | sed '$d' | jq -r .resources[0].metadata.guid)
+echo "CF_APP_USAGE_EVENT_GUID=${CF_APP_USAGE_EVENT_GUID}" >> cc-api-tests-bucket/app-usage-events.txt
