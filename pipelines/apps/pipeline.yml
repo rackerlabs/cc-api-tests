@@ -40,9 +40,6 @@ jobs:
     passed:
     - auth-with-uaa
   - task: list-all-apps
-    file: cc-api-tests/tasks/list-all-apps/task.yml
+    file: cc-api-tests/tasks/list_all_apps/task.yml
     params:
       PIPELINE: ((PIPELINE))
-  - put: cc-api-tests-bucket
-    params:
-      file: cc-api-tests-put-bucket/((PIPELINE)).txt

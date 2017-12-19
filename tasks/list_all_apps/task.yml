@@ -9,8 +9,6 @@ image_resource:
 inputs:
   - name: cc-api-tests
   - name: cc-api-tests-bucket
-outputs:
-  - name: cc-api-tests-put-bucket
 
 run:
   path: cc-api-tests/tasks/list_all_apps/task.sh
