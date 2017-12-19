@@ -42,4 +42,4 @@ jobs:
     file: cc-api-tests/tasks/list_all_app_usage_events/task.yml
   - put: cc-api-tests-bucket
     params:
-      file: cc-api-tests-bucket/app-usage-events.txt
+      file: cc-api-tests-put-bucket/app-usage-events.txt
