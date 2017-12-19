@@ -1,0 +1,48 @@
+resources:
+- name: cc-api-tests
+  type: git
+  source:
+    branch: master
+    private_key: ((cc_api_tests_priv_key))
+    uri: https://github.com/rackerlabs/cc-api-tests.git
+- name: cc-api-tests-bucket
+  type: s3
+  source:
+    bucket: cc-api-tests.atc.bubbleup.club
+    region_name: us-west-2
+    versioned_file: ((PIPELINE)).txt
+    access_key_id: ((CC_API_TEST_ACCESS_KEY))
+    secret_access_key: ((CC_API_TEST_SECRET_ACCESS_KEY))
+
+jobs:
+- name: auth-with-uaa
+  plan:
+  - get: cc-api-tests
+    trigger: true
+  - task: auth
+    file: cc-api-tests/tasks/auth/task.yml
+    params:
+      USERNAME: ((USERNAME))
+      PASSWORD: ((PASSWORD))
+      CLIENT_ID: ((CLIENT_ID))
+      LOGIN_URL: ((LOGIN_URL))
+      CF_API_URL: ((CF_API_URL))
+      PIPELINE: ((PIPELINE))
+  - put: cc-api-tests-bucket
+    params:
+      file: cc-api-tests-put-bucket/((PIPELINE)).txt
+
+- name: list-all-apps
+  plan:
+  - get: cc-api-tests
+  - get: cc-api-tests-bucket
+    trigger: true
+    passed:
+    - auth-with-uaa
+  - task: list-all-apps
+    file: cc-api-tests/tasks/list-all-apps/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
+  - put: cc-api-tests-bucket
+    params:
+      file: cc-api-tests-put-bucket/((PIPELINE)).txt
