@@ -8,7 +8,7 @@ then
     do
 	if [ ! -z "$var" ]
 	then
-	    echo "export $var"
+	    export $var
 	fi
     done < "$props"
 fi
