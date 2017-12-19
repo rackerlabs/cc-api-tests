@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 
-props="keyval/keyval.properties"
+props="cc-api-tests-bucket/app-usage-events.txt"
 if [ -f "$props" ]
 then
   echo "Reading passed key values"

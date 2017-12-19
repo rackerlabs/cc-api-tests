@@ -1,9 +1,3 @@
-resource_types:
-  - name: keyval
-    type: docker-image
-    source:
-      repository: swce/keyval-resource
-
 resources:
 - name: cc-api-tests
   type: git
@@ -11,9 +5,12 @@ resources:
     branch: master
     private_key: ((cc_api_tests_priv_key))
     uri: https://github.com/rackerlabs/cc-api-tests.git
-- name: keyval
-  type: keyval
-
+- name: cc-api-tests-bucket
+  type: s3
+  source:
+    bucket: cc-api-tests.atc.bubbleup.club
+    region: us-west-2
+    versioned_file: app-usage-events.txt
 
 jobs:
 - name: auth-with-uaa
@@ -28,14 +25,14 @@ jobs:
       CF_CLIENT_ID: ((CF_CLIENT_ID))
       CF_LOGIN_URL: ((CF_LOGIN_URL))
       CF_API_URL: ((CF_API_URL))
-  - put: keyval
+  - put: cc-api-tests-bucket
     params:
-      file: keyvalout/keyval.properties
+      file: cc-api-tests-bucket/app-usage-events.txt
 
 - name: list-all-app-usage-events
   plan:
   - get: cc-api-tests
-  - get: keyval
+  - get: cc-api-tests-bucket
     trigger: true
     passed:
     - auth-with-uaa

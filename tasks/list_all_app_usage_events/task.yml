@@ -9,7 +9,7 @@ image_resource:
 
 inputs:
   - name: cc-api-tests
-  - name: keyval
+  - name: cc-api-tests-bucket
 
 run:
   path: cc-api-tests/tasks/list_all_app_usage_events/task.sh

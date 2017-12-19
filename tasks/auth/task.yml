@@ -10,7 +10,7 @@ image_resource:
 inputs:
   - name: cc-api-tests
 outputs:
-  - name: keyvalout
+  - name: cc-api-tests-bucket
 
 run:
   path: cc-api-tests/tasks/auth/task.sh
