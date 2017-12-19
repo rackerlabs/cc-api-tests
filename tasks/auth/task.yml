@@ -4,8 +4,7 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: stevekaten/docker-pyresttest
-    tag: '1.0'
+    repository: quay.io/mpcf/cc-api-tests
 
 inputs:
   - name: cc-api-tests
