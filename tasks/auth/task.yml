@@ -10,14 +10,14 @@ image_resource:
 inputs:
   - name: cc-api-tests
 outputs:
-  - name: cc-api-tests-bucket
+  - name: cc-api-tests-put-bucket
 
 run:
   path: cc-api-tests/tasks/auth/task.sh
 
 params:
-  CF_USERNAME:
-  CF_PASSWORD:
-  CF_CLIENT_ID:
-  CF_LOGIN_URL:
+  USERNAME:
+  PASSWORD:
+  CLIENT_ID:
+  LOGIN_URL:
   CF_API_URL:

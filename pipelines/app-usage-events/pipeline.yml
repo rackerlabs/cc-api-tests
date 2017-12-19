@@ -22,14 +22,14 @@ jobs:
   - task: auth
     file: cc-api-tests/tasks/auth/task.yml
     params:
-      CF_USERNAME: ((CF_USERNAME))
-      CF_PASSWORD: ((CF_PASSWORD))
-      CF_CLIENT_ID: ((CF_CLIENT_ID))
-      CF_LOGIN_URL: ((CF_LOGIN_URL))
+      USERNAME: ((USERNAME))
+      PASSWORD: ((PASSWORD))
+      CLIENT_ID: (CLIENT_ID))
+      LOGIN_URL: ((LOGIN_URL))
       CF_API_URL: ((CF_API_URL))
-  - put: cc-api-tests-bucket
+  - put: cc-api-tests-put-bucket
     params:
-      file: cc-api-tests-bucket/app-usage-events.txt
+      file: cc-api-tests-put-bucket/app-usage-events.txt
 
 - name: list-all-app-usage-events
   plan:

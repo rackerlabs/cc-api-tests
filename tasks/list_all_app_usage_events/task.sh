@@ -15,4 +15,11 @@ then
 fi
 
 export CF_APP_USAGE_EVENT_GUID=$(pyresttest --print-bodies=true https://$CF_API_URL cc-api-tests/tasks/list_all_app_usage_events/test.yml | sed '$d' | jq -r .resources[0].metadata.guid)
-echo "CF_APP_USAGE_EVENT_GUID=${CF_APP_USAGE_EVENT_GUID}" >> cc-api-tests-put-bucket/app-usage-events.txt
+
+props="cc-api-tests-put-bucket/app-usage-events.txt"
+echo "Setting key values for next job"
+while IFS='=' read -r name value ; do
+    if [[ $name == 'CF_'* ]]; then
+	echo "Adding: ${name}"
+    fi
+done < <(env)

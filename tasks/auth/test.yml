@@ -2,10 +2,10 @@
 - config:
   - testset: "API"
   - generators:
-      - 'cf_username': {type: 'env_variable', variable_name: 'CF_USERNAME'}
-      - 'cf_password': {type: 'env_variable', variable_name: 'CF_PASSWORD'}
-      - 'cf_client_id': {type: 'env_variable', variable_name: 'CF_CLIENT_ID'}
-      - 'cf_login_url': {type: 'env_variable', variable_name: 'CF_LOGIN_URL'}
+      - 'cf_username': {type: 'env_variable', variable_name: 'USERNAME'}
+      - 'cf_password': {type: 'env_variable', variable_name: 'PASSWORD'}
+      - 'cf_client_id': {type: 'env_variable', variable_name: 'CLIENT_ID'}
+      - 'cf_login_url': {type: 'env_variable', variable_name: 'LOGIN_URL'}
 
 - test:
     - generator_binds: {cf_username: cf_username, cf_password: cf_password, cf_client_id: cf_client_id, cf_login_url: cf_login_url}
@@ -16,5 +16,3 @@
     - headers: {'Content-Type': 'application/json', 'Authorization': 'Basic Y2Y6'}
     - expected_status: [200]
     - extract_test: {jsonpath_mini: 'access_token', test: 'exists'}
-    - extract_binds:
-        - 'global_bearer_token': {'jsonpath_mini': 'access_token'}
