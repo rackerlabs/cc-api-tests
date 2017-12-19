@@ -11,6 +11,8 @@ resources:
     bucket: cc-api-tests.atc.bubbleup.club
     region_name: us-west-2
     versioned_file: app-usage-events.txt
+    access_key_id: ((CC_API_TEST_ACCESS_KEY))
+    secret_access_key: ((CC_API_TEST_SECRET_ACCESS_KEY))
 
 jobs:
 - name: auth-with-uaa
