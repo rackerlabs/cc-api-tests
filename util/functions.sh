@@ -9,19 +9,3 @@ function write_env_vars_to_file () (
 	fi
     done < <(env)
     )
-
-function read_env_vars_from_file () (
-    set -eu
-    props="cc-api-tests-bucket/app-usage-events.txt"
-    if [ -f "$props" ]
-    then
-	echo "Reading passed key values"
-	while IFS= read -r var
-	do
-	    if [ ! -z "$var" ]
-	    then
-		echo "export $var"
-	    fi
-	done < "$props"
-    fi
-)
