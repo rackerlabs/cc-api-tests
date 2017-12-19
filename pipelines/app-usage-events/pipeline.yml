@@ -43,3 +43,13 @@ jobs:
   - put: cc-api-tests-bucket
     params:
       file: cc-api-tests-put-bucket/app-usage-events.txt
+
+- name: retrieve_a_particular_app_usage_event
+  plan:
+  - get: cc-api-tests
+  - get: cc-api-tests-bucket
+    trigger: true
+    passed:
+    - list-all-app-usage-events
+  - task: retrieve_a_particular_app_usage_event
+    file: cc-api-tests/tasks/retrieve_a_particular_app_usage_event/task.yml
