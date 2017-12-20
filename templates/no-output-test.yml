@@ -7,7 +7,7 @@
 
 - test:
     - generator_binds: {cf_api_url: cf_api_url, cf_auth_token: cf_auth_token}
-    - name: "TEST_NAME_READABLE"
+    - name: "TEST_NAME"
     - url: {template: "https://$cf_api_urlREQUEST_PATH"}
     - method: "REQUEST_METHOD"
     - body: 'REQUEST_BODY'

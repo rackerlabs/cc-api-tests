@@ -55,3 +55,18 @@ jobs:
     file: cc-api-tests/tasks/creating_an_organization/task.yml
     params:
       PIPELINE: ((PIPELINE))
+  - put: cc-api-tests-bucket
+    params:
+      file: cc-api-tests-put-bucket/((PIPELINE)).txt
+
+- name: delete-a-particular-organization
+  plan:
+  - get: cc-api-tests
+  - get: cc-api-tests-bucket
+    trigger: true
+    passed:
+    - creating-an-organization
+  - task: delete-a-particular-organization
+    file: cc-api-tests/tasks/delete_a_particular_organization/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
