@@ -1,0 +1,16 @@
+---
+- config:
+    - testset: "API"
+    - generators:
+        - 'cf_api_url': {type: 'env_variable', variable_name: 'CF_API_URL'}
+        - 'cf_auth_token': {type: 'env_variable', variable_name: 'CF_AUTH_TOKEN'}
+        - 'cf_organization_guid': {type: 'env_variable', variable_name: 'CF_ORGANIZATION_GUID'}
+        - 'random_name': {type: 'random_text'}
+- test:
+    - generator_binds: {cf_api_url: cf_api_url, cf_auth_token: cf_auth_token, cf_organization_guid: cf_organization_guid, random_name: random_name}
+    - name: "creating-a-space"
+    - url: {template: "https://$cf_api_url/v2/spaces"}
+    - method: "POST"
+    - body: {template: '{"name": "$random_name", "organization_guid": "$cf_organization_guid"}'}
+    - headers: {template: {'Content-Type': 'application/json', 'Authorization': 'Bearer $cf_auth_token'}}
+    - expected_status: [201]
