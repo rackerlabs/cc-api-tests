@@ -4,7 +4,7 @@
     - generators:
         - 'cf_api_url': {type: 'env_variable', variable_name: 'CF_API_URL'}
         - 'cf_auth_token': {type: 'env_variable', variable_name: 'CF_AUTH_TOKEN'}
-        - 'random_name': {type: 'random_text', variable_name: 'random_name'}
+        - 'random_name': {type: 'random_text'}
 
 - test:
     - generator_binds: {cf_api_url: cf_api_url, cf_auth_token: cf_auth_token, random_name: random_name}
