@@ -13,7 +13,7 @@ outputs:
   - name: cc-api-tests-put-bucket
 
 run:
-  path: cc-api-tests/tasks/creating_a_space/task.sh
+  path: cc-api-tests/tasks/delete_a_particular_space/task.sh
 
 params:
   PIPELINE:

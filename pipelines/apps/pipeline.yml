@@ -59,13 +59,45 @@ jobs:
     params:
       file: cc-api-tests-put-bucket/((PIPELINE)).txt
 
-- name: delete-a-particular-organization
+- name: creating-a-space
   plan:
   - get: cc-api-tests
   - get: cc-api-tests-bucket
     trigger: true
     passed:
     - creating-an-organization
+  - task: creating-a-space
+    file: cc-api-tests/tasks/creating_a_space/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
+  - put: cc-api-tests-bucket
+    params:
+      file: cc-api-tests-put-bucket/((PIPELINE)).txt
+
+
+- name: delete-a-particular-space
+  plan:
+  - get: cc-api-tests
+  - get: cc-api-tests-bucket
+    trigger: true
+    passed:
+    - creating-a-space
+  - task: delete-a-particular-space
+    file: cc-api-tests/tasks/delete_a_particular_space/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
+  - put: cc-api-tests-bucket
+    params:
+      file: cc-api-tests-put-bucket/((PIPELINE)).txt
+
+
+- name: delete-a-particular-organization
+  plan:
+  - get: cc-api-tests
+  - get: cc-api-tests-bucket
+    trigger: true
+    passed:
+    - delete-a-particular-space
   - task: delete-a-particular-organization
     file: cc-api-tests/tasks/delete_a_particular_organization/task.yml
     params:
