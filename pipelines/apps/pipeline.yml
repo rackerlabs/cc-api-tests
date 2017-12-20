@@ -43,3 +43,15 @@ jobs:
     file: cc-api-tests/tasks/list_all_apps/task.yml
     params:
       PIPELINE: ((PIPELINE))
+
+- name: creating-an-organization
+  plan:
+  - get: cc-api-tests
+  - get: cc-api-tests-bucket
+    trigger: true
+    passed:
+    - auth-with-uaa
+  - task: creating-an-organization
+    file: cc-api-tests/tasks/creating_an_organization/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
