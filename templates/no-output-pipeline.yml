@@ -1,0 +1,12 @@
+
+- name: TEST_NAME
+  plan:
+  - get: cc-api-tests
+  - get: cc-api-tests-bucket
+    trigger: true
+    passed:
+    - auth-with-uaa
+  - task: TEST_NAME
+    file: cc-api-tests/tasks/TEST_NAME_WITH_UNDERSCORES/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
