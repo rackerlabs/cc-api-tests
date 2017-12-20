@@ -29,3 +29,5 @@ for x in no-output-task.sh no-output-test.yml no-output-task.yml; do
 			   -e "s/REQUEST_METHOD/${REQUEST_METHOD}/g" \
 			   -e "s/EXPECTED_RESPONSE/${EXPECTED_RESPONSE}/g" > tasks/"$TEST_NAME_WITH_UNDERSCORES"/"$(echo $x | sed 's/no-output-//g')"
 done
+
+chmod +x tasks/"$TEST_NAME_WITH_UNDERSCORES"/task.sh
