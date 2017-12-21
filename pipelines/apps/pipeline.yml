@@ -181,6 +181,21 @@ jobs:
     params:
       file: cc-api-tests-put-bucket/((PIPELINE)).txt
 
+- name: create-a-shared-domain
+  plan:
+  - get: cc-api-tests
+  - get: cc-api-tests-bucket
+    trigger: true
+    passed:
+    - creating-an-app
+  - task: create-a-shared-domain
+    file: cc-api-tests/tasks/create_a_shared_domain/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
+  - put: cc-api-tests-bucket
+    params:
+      file: cc-api-tests-put-bucket/((PIPELINE)).txt
+
 - name: delete-a-particular-app
   plan:
   - get: cc-api-tests
