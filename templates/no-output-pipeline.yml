@@ -10,3 +10,6 @@
     file: cc-api-tests/tasks/TEST_NAME_WITH_UNDERSCORES/task.yml
     params:
       PIPELINE: ((PIPELINE))
+  - put: cc-api-tests-bucket
+    params:
+      file: cc-api-tests-put-bucket/((PIPELINE)).txt
