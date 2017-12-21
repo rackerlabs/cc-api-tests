@@ -1,5 +1,4 @@
 #!/bin/bash
-set -eu
 
 props="cc-api-tests-bucket/${PIPELINE}.txt"
 if [ -f "$props" ]
