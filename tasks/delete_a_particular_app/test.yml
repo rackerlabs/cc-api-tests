@@ -7,7 +7,7 @@
         - 'cf_app_guid': {type: 'env_variable', variable_name: 'CF_APP_GUID'}
 
 - test:
-    - generator_binds: {cf_api_url: cf_api_url, cf_auth_token: cf_auth_token}
+    - generator_binds: {cf_api_url: cf_api_url, cf_auth_token: cf_auth_token, cf_app_guid: cf_app_guid}
     - name: "delete-a-particular-app"
     - url: {template: "https://$cf_api_url/v2/apps/$cf_app_guid"}
     - method: "DELETE"
