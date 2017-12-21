@@ -89,13 +89,28 @@ jobs:
     params:
       file: cc-api-tests-put-bucket/((PIPELINE)).txt
 
-- name: delete-a-particular-space
+- name: delete-a-particular-app
   plan:
   - get: cc-api-tests
   - get: cc-api-tests-bucket
     trigger: true
     passed:
     - creating-an-app
+  - task: delete-a-particular-app
+    file: cc-api-tests/tasks/delete_a_particular_app/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
+  - put: cc-api-tests-bucket
+    params:
+      file: cc-api-tests-put-bucket/((PIPELINE)).txt
+
+- name: delete-a-particular-space
+  plan:
+  - get: cc-api-tests
+  - get: cc-api-tests-bucket
+    trigger: true
+    passed:
+    - delete-a-particular-app
   - task: delete-a-particular-space
     file: cc-api-tests/tasks/delete_a_particular_space/task.yml
     params:
@@ -103,7 +118,6 @@ jobs:
   - put: cc-api-tests-bucket
     params:
       file: cc-api-tests-put-bucket/((PIPELINE)).txt
-
 
 - name: delete-a-particular-organization
   plan:
