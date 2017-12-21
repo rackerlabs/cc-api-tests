@@ -166,6 +166,21 @@ jobs:
     params:
       file: cc-api-tests-put-bucket/((PIPELINE)).txt
 
+- name: get-the-env-for-an-app
+  plan:
+  - get: cc-api-tests
+  - get: cc-api-tests-bucket
+    trigger: true
+    passed:
+    - creating-an-app
+  - task: get-the-env-for-an-app
+    file: cc-api-tests/tasks/get_the_env_for_an_app/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
+  - put: cc-api-tests-bucket
+    params:
+      file: cc-api-tests-put-bucket/((PIPELINE)).txt
+
 - name: delete-a-particular-app
   plan:
   - get: cc-api-tests
@@ -177,6 +192,7 @@ jobs:
     - list-all-service-bindings-for-the-app
     - retrieve-a-particular-app
     - retrieving-permissions-on-a-app
+    - get-the-env-for-an-app
   - task: delete-a-particular-app
     file: cc-api-tests/tasks/delete_a_particular_app/task.yml
     params:
