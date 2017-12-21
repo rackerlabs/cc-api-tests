@@ -187,9 +187,25 @@ jobs:
   - get: cc-api-tests-bucket
     trigger: true
     passed:
-    - creating-an-app
+    - auth-with-uaa
   - task: create-a-shared-domain
     file: cc-api-tests/tasks/create_a_shared_domain/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
+  - put: cc-api-tests-bucket
+    params:
+      file: cc-api-tests-put-bucket/((PIPELINE)).txt
+
+- name: creating-a-route
+  plan:
+  - get: cc-api-tests
+  - get: cc-api-tests-bucket
+    trigger: true
+    passed:
+    - creating-a-space
+    - create-a-shared-domain
+  - task: creating-a-route
+    file: cc-api-tests/tasks/creating_a_route/task.yml
     params:
       PIPELINE: ((PIPELINE))
   - put: cc-api-tests-bucket
