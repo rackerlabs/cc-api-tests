@@ -150,6 +150,22 @@ jobs:
     params:
       file: cc-api-tests-put-bucket/((PIPELINE)).txt
 
+
+- name: retrieving-permissions-on-a-app
+  plan:
+  - get: cc-api-tests
+  - get: cc-api-tests-bucket
+    trigger: true
+    passed:
+    - creating-an-app
+  - task: retrieving-permissions-on-a-app
+    file: cc-api-tests/tasks/retrieving_permissions_on_a_app/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
+  - put: cc-api-tests-bucket
+    params:
+      file: cc-api-tests-put-bucket/((PIPELINE)).txt
+
 - name: delete-a-particular-app
   plan:
   - get: cc-api-tests
@@ -160,6 +176,7 @@ jobs:
     - list-all-routes-for-the-app
     - list-all-service-bindings-for-the-app
     - retrieve-a-particular-app
+    - retrieving-permissions-on-a-app
   - task: delete-a-particular-app
     file: cc-api-tests/tasks/delete_a_particular_app/task.yml
     params:

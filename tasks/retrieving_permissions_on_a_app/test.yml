@@ -8,8 +8,8 @@
 
 - test:
     - generator_binds: {cf_api_url: cf_api_url, cf_auth_token: cf_auth_token, cf_app_guid: cf_app_guid}
-    - name: "retrieve-a-particular-app"
-    - url: {template: "https://$cf_api_url/v2/apps/$cf_app_guid"}
+    - name: "retrieving-permissions-on-a-app"
+    - url: {template: "https://$cf_api_url/v2/apps/$cf_app_guid/permissions"}
     - method: "GET"
     - headers: {template: {'Content-Type': 'application/json', 'Authorization': 'Bearer $cf_auth_token'}}
     - expected_status: [200]

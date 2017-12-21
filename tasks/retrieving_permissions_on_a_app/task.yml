@@ -1,0 +1,20 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: quay.io/mpcf/cc-api-tests
+
+inputs:
+  - name: cc-api-tests
+  - name: cc-api-tests-bucket
+outputs:
+  - name: cc-api-tests-put-bucket
+
+
+run:
+  path: cc-api-tests/tasks/retrieving_permissions_on_a_app/task.sh
+
+params:
+  PIPELINE:
