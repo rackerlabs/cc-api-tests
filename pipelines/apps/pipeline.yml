@@ -177,3 +177,18 @@ jobs:
     file: cc-api-tests/tasks/delete_a_particular_organization/task.yml
     params:
       PIPELINE: ((PIPELINE))
+
+- name: retrieve-a-particular-app
+  plan:
+  - get: cc-api-tests
+  - get: cc-api-tests-bucket
+    trigger: true
+    passed:
+    - auth-with-uaa
+  - task: retrieve-a-particular-app
+    file: cc-api-tests/tasks/retrieve_a_particular_app/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
+  - put: cc-api-tests-bucket
+    params:
+      file: cc-api-tests-put-bucket/((PIPELINE)).txt
