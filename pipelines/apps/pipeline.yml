@@ -104,6 +104,21 @@ jobs:
     params:
       file: cc-api-tests-put-bucket/((PIPELINE)).txt
 
+- name: list-all-routes-for-the-app
+  plan:
+  - get: cc-api-tests
+  - get: cc-api-tests-bucket
+    trigger: true
+    passed:
+    - creating-an-app
+  - task: list-all-routes-for-the-app
+    file: cc-api-tests/tasks/list_all_routes_for_the_app/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
+  - put: cc-api-tests-bucket
+    params:
+      file: cc-api-tests-put-bucket/((PIPELINE)).txt
+
 - name: delete-a-particular-app
   plan:
   - get: cc-api-tests
@@ -111,6 +126,7 @@ jobs:
     trigger: true
     passed:
     - get-app-summary
+    - list-all-routes-for-the-app
   - task: delete-a-particular-app
     file: cc-api-tests/tasks/delete_a_particular_app/task.yml
     params:
