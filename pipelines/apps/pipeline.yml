@@ -38,6 +38,13 @@ jobs:
     file: cc-api-tests/tasks/creating_a_space/task.yml
     params:
       PIPELINE: ((PIPELINE))
+  - task: creating-an-app
+    file: cc-api-tests/tasks/creating_an_app/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
+
+
+
 # - name: list-all-apps
 #   plan:
 #   - get: cc-api-tests
@@ -49,21 +56,6 @@ jobs:
 #     file: cc-api-tests/tasks/list_all_apps/task.yml
 #     params:
 #       PIPELINE: ((PIPELINE))
-
-# - name: creating-a-space
-#   plan:
-#   - get: cc-api-tests
-#   - get: cc-api-tests-bucket
-#     trigger: true
-#     passed:
-#     - creating-an-organization
-#   - task: creating-a-space
-#     file: cc-api-tests/tasks/creating_a_space/task.yml
-#     params:
-#       PIPELINE: ((PIPELINE))
-#   - put: cc-api-tests-bucket
-#     params:
-#       file: cc-api-tests-put-bucket/((PIPELINE)).txt
 
 # - name: creating-an-app
 #   plan:

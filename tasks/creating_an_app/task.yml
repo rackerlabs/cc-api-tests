@@ -8,9 +8,9 @@ image_resource:
 
 inputs:
   - name: cc-api-tests
-  - name: cc-api-tests-bucket
+  - name: cc-api-output-creating-a-space
 outputs:
-  - name: cc-api-tests-put-bucket
+  - name: cc-api-output-creating-an-app
 
 
 run:
@@ -18,3 +18,5 @@ run:
 
 params:
   PIPELINE:
+  INPUT: cc-api-output-creating-a-space
+  OUTPUT: cc-api-output-creating-an-app
