@@ -9,12 +9,13 @@ image_resource:
 inputs:
   - name: cc-api-tests
 outputs:
-  - name: cc-api-tests-put-bucket
+  - name: buildstep
 
 run:
   path: cc-api-tests/tasks/auth/task.sh
 
 params:
+  BUILDSTEP:
   USERNAME:
   PASSWORD:
   CLIENT_ID:

@@ -8,9 +8,9 @@ image_resource:
 
 inputs:
   - name: cc-api-tests
-  - name: ((READFROM))
+  - name: readfrom
 outputs:
-  - name: ((BUILDSTEP))
+  - name: buildstep
 
 run:
   path: cc-api-tests/tasks/list_all_app_usage_events/task.sh
