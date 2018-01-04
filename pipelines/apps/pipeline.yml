@@ -5,14 +5,14 @@ resources:
     branch: master
     private_key: ((cc_api_tests_priv_key))
     uri: https://github.com/rackerlabs/cc-api-tests.git
-- name: cc-api-tests-bucket
-  type: s3
-  source:
-    bucket: cc-api-tests.atc.bubbleup.club
-    region_name: us-west-2
-    versioned_file: ((PIPELINE)).txt
-    access_key_id: ((CC_API_TEST_ACCESS_KEY))
-    secret_access_key: ((CC_API_TEST_SECRET_ACCESS_KEY))
+# - name: cc-api-tests-bucket
+#   type: s3
+#   source:
+#     bucket: cc-api-tests.atc.bubbleup.club
+#     region_name: us-west-2
+#     versioned_file: ((PIPELINE)).txt
+#     access_key_id: ((CC_API_TEST_ACCESS_KEY))
+#     secret_access_key: ((CC_API_TEST_SECRET_ACCESS_KEY))
 
 jobs:
 - name: setup

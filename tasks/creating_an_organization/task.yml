@@ -18,4 +18,4 @@ run:
 params:
   PIPELINE:
   INPUT: cc-api-output-auth
-  OUTPUT: cc-api-output-list-all-app-usage-events
+  OUTPUT: cc-api-output-creating-an-organization
