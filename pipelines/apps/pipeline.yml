@@ -34,7 +34,10 @@ jobs:
     file: cc-api-tests/tasks/creating_an_organization/task.yml
     params:
       PIPELINE: ((PIPELINE))
-
+  - task: creating-a-space
+    file: cc-api-tests/tasks/creating_a_space/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
 # - name: list-all-apps
 #   plan:
 #   - get: cc-api-tests

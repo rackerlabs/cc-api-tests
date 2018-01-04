@@ -8,12 +8,14 @@ image_resource:
 
 inputs:
   - name: cc-api-tests
-  - name: cc-api-tests-bucket
+  - name: cc-api-output-creating-an-organization
 outputs:
-  - name: cc-api-tests-put-bucket
+  - name: cc-api-output-creating-a-space
 
 run:
   path: cc-api-tests/tasks/creating_a_space/task.sh
 
 params:
   PIPELINE:
+  INPUT: cc-api-output-creating-an-organization
+  OUTPUT: cc-api-output-creating-a-space
