@@ -5,14 +5,14 @@ resources:
     branch: master
     private_key: ((cc_api_tests_priv_key))
     uri: https://github.com/rackerlabs/cc-api-tests.git
-# - name: cc-api-tests-bucket
-#   type: s3
-#   source:
-#     bucket: cc-api-tests.atc.bubbleup.club
-#     region_name: us-west-2
-#     versioned_file: ((PIPELINE)).txt
-#     access_key_id: ((CC_API_TEST_ACCESS_KEY))
-#     secret_access_key: ((CC_API_TEST_SECRET_ACCESS_KEY))
+- name: cc-api-tests-bucket
+  type: s3
+  source:
+    bucket: cc-api-tests.atc.bubbleup.club
+    region_name: us-west-2
+    versioned_file: ((PIPELINE)).txt
+    access_key_id: ((CC_API_TEST_ACCESS_KEY))
+    secret_access_key: ((CC_API_TEST_SECRET_ACCESS_KEY))
 
 jobs:
 - name: setup
@@ -30,20 +30,38 @@ jobs:
       LOGIN_URL: ((LOGIN_URL))
       CF_API_URL: ((CF_API_URL))
       PIPELINE: ((PIPELINE))
-  - task: creating-an-organization
-    file: cc-api-tests/tasks/creating_an_organization/task.yml
-    params:
-      PIPELINE: ((PIPELINE))
+  - aggregate:
+    - task: create-a-shared-domain
+      file: cc-api-tests/tasks/create_a_shared_domain/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+    - task: creating-an-organization
+      file: cc-api-tests/tasks/creating_an_organization/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
   - task: creating-a-space
     file: cc-api-tests/tasks/creating_a_space/task.yml
     params:
       PIPELINE: ((PIPELINE))
+  - put: cc-api-tests-bucket
+    params:
+      file: cc-api-output-creating-a-space/((PIPELINE)).txt
+
+- name: test
+  serial: true
+  seral_groups: [((PIPELINE))]
+  plan:
+  - get: cc-api-tests
+    trigger: true
+  - get: cc-api-tests-bucket
+    trigger: true
+    passed:
+    - setup
   - task: creating-an-app
     file: cc-api-tests/tasks/creating_an_app/task.yml
     params:
       PIPELINE: ((PIPELINE))
-
-
+    input_mapping: {cc-api-output-creating-a-space: cc-api-tests-bucket}
 
 # - name: list-all-apps
 #   plan:
@@ -56,21 +74,6 @@ jobs:
 #     file: cc-api-tests/tasks/list_all_apps/task.yml
 #     params:
 #       PIPELINE: ((PIPELINE))
-
-# - name: creating-an-app
-#   plan:
-#   - get: cc-api-tests
-#   - get: cc-api-tests-bucket
-#     trigger: true
-#     passed:
-#     - creating-a-space
-#   - task: creating-an-app
-#     file: cc-api-tests/tasks/creating_an_app/task.yml
-#     params:
-#       PIPELINE: ((PIPELINE))
-#   - put: cc-api-tests-bucket
-#     params:
-#       file: cc-api-tests-put-bucket/((PIPELINE)).txt
 
 # - name: get-app-summary
 #   plan:

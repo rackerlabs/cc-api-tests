@@ -8,9 +8,9 @@ image_resource:
 
 inputs:
   - name: cc-api-tests
-  - name: cc-api-tests-bucket
+  - name: cc-api-output-auth
 outputs:
-  - name: cc-api-tests-put-bucket
+  - name: cc-api-tests-create-a-shared-domain
 
 
 run:
@@ -18,3 +18,5 @@ run:
 
 params:
   PIPELINE:
+  INPUT: cc-api-output-auth
+  OUTPUT: cc-api-tests-create-a-shared-domain
