@@ -10,7 +10,7 @@ inputs:
   - name: cc-api-tests
   - name: cc-api-output-auth
 outputs:
-  - name: cc-api-tests-create-a-shared-domain
+  - name: cc-api-output-create-a-shared-domain
 
 
 run:
