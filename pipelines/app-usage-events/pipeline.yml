@@ -15,7 +15,9 @@ resources:
     secret_access_key: ((CC_API_TEST_SECRET_ACCESS_KEY))
 
 jobs:
-- name: auth-with-uaa
+- name: setup
+  serial: true
+  serial_groups: [app-usage-events]
   plan:
   - get: cc-api-tests
     trigger: true
@@ -30,30 +32,22 @@ jobs:
       PIPELINE: ((PIPELINE))
   - put: cc-api-tests-bucket
     params:
-      file: cc-api-tests-put-bucket/app-usage-events.txt
+      file: cc-api-output-auth/app-usage-events.txt
 
-- name: list-all-app-usage-events
+- name: test
+  serial: true
+  serial_groups: [app-usage-events]
   plan:
   - get: cc-api-tests
   - get: cc-api-tests-bucket
     trigger: true
     passed:
-    - auth-with-uaa
+    - setup
   - task: list-all-app-usage-events
     file: cc-api-tests/tasks/list_all_app_usage_events/task.yml
     params:
       PIPELINE: ((PIPELINE))
-  - put: cc-api-tests-bucket
-    params:
-      file: cc-api-tests-put-bucket/app-usage-events.txt
-
-- name: retrieve_a_particular_app_usage_event
-  plan:
-  - get: cc-api-tests
-  - get: cc-api-tests-bucket
-    trigger: true
-    passed:
-    - list-all-app-usage-events
+    input_mapping: {cc-api-output-auth: cc-api-tests-bucket}
   - task: retrieve_a_particular_app_usage_event
     file: cc-api-tests/tasks/retrieve_a_particular_app_usage_event/task.yml
     params:
