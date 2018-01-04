@@ -1,5 +1,5 @@
 function write_env_vars_to_file () (
-    props="${BUILDSTEP}/${PIPELINE}.txt"
+    props="${OUTPUT}/${PIPELINE}.txt"
     echo "Setting key values for next job"
     while IFS='=' read -r name value ; do
 	if [[ $name == 'CF_'* ]]; then

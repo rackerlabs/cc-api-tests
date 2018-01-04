@@ -8,14 +8,13 @@ image_resource:
 
 inputs:
   - name: cc-api-tests
-  - name: readfrom
+  - name: cc-api-output-auth
 outputs:
-  - name: buildstep
-
+  - name: cc-api-output-list-all-app-usage-events
 run:
   path: cc-api-tests/tasks/list_all_app_usage_events/task.sh
 
 params:
-  READFROM:
-  BUILDSTEP:
+  INPUT: cc-api-output-auth
+  OUTPUT: cc-api-output-list-all-app-usage-events
   PIPELINE:

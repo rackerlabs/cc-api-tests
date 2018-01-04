@@ -9,13 +9,13 @@ image_resource:
 inputs:
   - name: cc-api-tests
 outputs:
-  - name: buildstep
+  - name: cc-api-output-auth
 
 run:
   path: cc-api-tests/tasks/auth/task.sh
 
 params:
-  BUILDSTEP:
+  OUTPUT: cc-api-output-auth
   USERNAME:
   PASSWORD:
   CLIENT_ID:

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-props="${READFROM}/${PIPELINE}.txt"
+props="${INPUT}/${PIPELINE}.txt"
 if [ -f "$props" ]
 then
     while IFS= read -r var
