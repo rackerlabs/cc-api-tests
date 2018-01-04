@@ -19,4 +19,4 @@ run:
 params:
   PIPELINE:
   INPUT: cc-api-output-auth
-  OUTPUT: cc-api-tests-create-a-shared-domain
+  OUTPUT: cc-api-output-create-a-shared-domain
