@@ -8,12 +8,14 @@ image_resource:
 
 inputs:
   - name: cc-api-tests
-  - name: cc-api-tests-bucket
+  - name: ((READFROM))
 outputs:
-  - name: cc-api-tests-put-bucket
+  - name: ((BUILDSTEP))
 
 run:
   path: cc-api-tests/tasks/list_all_app_usage_events/task.sh
 
 params:
+  READFROM:
+  BUILDSTEP:
   PIPELINE:

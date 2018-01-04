@@ -1,6 +1,6 @@
 #!/bin/bash
 
-props="cc-api-tests-bucket/${PIPELINE}.txt"
+props="${READFROM}/${PIPELINE}.txt"
 if [ -f "$props" ]
 then
     while IFS= read -r var
