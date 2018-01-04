@@ -43,9 +43,11 @@ jobs:
     file: cc-api-tests/tasks/creating_a_space/task.yml
     params:
       PIPELINE: ((PIPELINE))
+  - task: rollup-input
+    file: cc-api-tests/tasks/rollup_input/task.yml
   - put: cc-api-tests-bucket
     params:
-      file: cc-api-output-creating-a-space/((PIPELINE)).txt
+      file: cc-api-output-rollup-input/((PIPELINE)).txt
 
 - name: test
   serial: true
