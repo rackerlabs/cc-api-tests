@@ -49,7 +49,7 @@ jobs:
 
 - name: test
   serial: true
-  seral_groups: [((PIPELINE))]
+  serial_groups: [((PIPELINE))]
   plan:
   - get: cc-api-tests
     trigger: true
