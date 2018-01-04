@@ -1,0 +1,23 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: quay.io/mpcf/cc-api-tests
+
+inputs:
+  - name: cc-api-tests
+  - name: cc-api-output-auth
+  - name: cc-api-output-create-a-shared-domain
+  - name: cc-api-output-creating-an-organization
+  - name: cc-api-output-creating-a-space
+outputs:
+  - name: cc-api-output-rollup-input
+
+run:
+  path: cc-api-tests/tasks/rollup_input/task.sh
+
+params:
+  PIPELINE:
+  OUTPUT: cc-api-output-rollup-input
