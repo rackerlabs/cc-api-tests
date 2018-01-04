@@ -13,6 +13,7 @@ function run_test () {
     if [ -z ${2} ]; then
 	pyresttest --print-bodies=true https://${CF_API_URL} cc-api-tests/tasks/${1}/test.yml
     else
-	export ${2}=$(pyresttest --print-bodies=true https://$CF_API_URL cc-api-tests/tasks/${1}/test.yml | sed '$d' | jq -r ${3})
+	${2}=$(pyresttest --print-bodies=true https://$CF_API_URL cc-api-tests/tasks/${1}/test.yml | sed '$d' | jq -r ${3})
+	export ${2}
     fi
     }
