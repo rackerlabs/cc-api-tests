@@ -8,12 +8,14 @@ image_resource:
 
 inputs:
   - name: cc-api-tests
-  - name: cc-api-tests-bucket
+  - name: cc-api-output-auth
 outputs:
-  - name: cc-api-tests-put-bucket
+  - name: cc-api-output-creating-an-organization
 
 run:
   path: cc-api-tests/tasks/creating_an_organization/task.sh
 
 params:
   PIPELINE:
+  INPUT: cc-api-output-auth
+  OUTPUT: cc-api-output-list-all-app-usage-events
