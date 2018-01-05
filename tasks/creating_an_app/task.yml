@@ -12,7 +12,6 @@ inputs:
 outputs:
   - name: cc-api-output-creating-an-app
 
-
 run:
   path: cc-api-tests/tasks/creating_an_app/task.sh
 
