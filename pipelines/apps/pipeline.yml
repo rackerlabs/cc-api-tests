@@ -56,7 +56,6 @@ jobs:
   serial_groups: [((PIPELINE))]
   plan:
   - get: cc-api-tests
-    trigger: true
   - get: cc-api-tests-bucket
     trigger: true
     passed:
