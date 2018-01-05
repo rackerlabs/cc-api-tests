@@ -3,6 +3,7 @@
     - testset: "API"
     - generators:
         - 'cf_api_url': {type: 'env_variable', variable_name: 'CF_API_URL'}
+        - 'cf_auth_token': {type: 'env_variable', variable_name: 'CF_AUTH_TOKEN'}
         - 'cf_route_guid': {type: 'env_variable', variable_name: 'CF_ROUTE_GUID'}
         - 'cf_app_guid': {type: 'env_variable', variable_name: 'CF_APP_GUID'}
 - test:
