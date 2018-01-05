@@ -79,37 +79,10 @@ jobs:
     file: cc-api-tests/tasks/list_all_routes_for_the_app/task.yml
     params:
       PIPELINE: ((PIPELINE))
-
-# - name: list-all-routes-for-the-app
-#   plan:
-#   - get: cc-api-tests
-#   - get: cc-api-tests-bucket
-#     trigger: true
-#     passed:
-#     - creating-an-app
-#   - task: list-all-routes-for-the-app
-#     file: cc-api-tests/tasks/list_all_routes_for_the_app/task.yml
-#     params:
-#       PIPELINE: ((PIPELINE))
-#   - put: cc-api-tests-bucket
-#     params:
-#       file: cc-api-tests-put-bucket/((PIPELINE)).txt
-
-# - name: list-all-service-bindings-for-the-app
-#   plan:
-#   - get: cc-api-tests
-#   - get: cc-api-tests-bucket
-#     trigger: true
-#     passed:
-#     - creating-an-app
-#   - task: list-all-service-bindings-for-the-app
-#     file: cc-api-tests/tasks/list_all_service_bindings_for_the_app/task.yml
-#     params:
-#       PIPELINE: ((PIPELINE))
-#   - put: cc-api-tests-bucket
-#     params:
-#       file: cc-api-tests-put-bucket/((PIPELINE)).txt
-
+  - task: list-all-service-bindings-for-the-app
+    file: cc-api-tests/tasks/list_all_service_bindings_for_the_app/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
 
 # - name: retrieve-a-particular-app
 #   plan:
