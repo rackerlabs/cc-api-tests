@@ -65,35 +65,36 @@ jobs:
     params:
       PIPELINE: ((PIPELINE))
     input_mapping: {cc-api-output-creating-a-space: cc-api-tests-bucket}
-  - task: list-all-apps
-    file: cc-api-tests/tasks/list_all_apps/task.yml
-    params:
-      PIPELINE: ((PIPELINE))
-    input_mapping: {cc-api-output-creating-a-space: cc-api-tests-bucket}
-  - task: get-app-summary
-    file: cc-api-tests/tasks/get_app_summary/task.yml
-    params:
-      PIPELINE: ((PIPELINE))
-  - task: list-all-routes-for-the-app
-    file: cc-api-tests/tasks/list_all_routes_for_the_app/task.yml
-    params:
-      PIPELINE: ((PIPELINE))
-  - task: list-all-service-bindings-for-the-app
-    file: cc-api-tests/tasks/list_all_service_bindings_for_the_app/task.yml
-    params:
-      PIPELINE: ((PIPELINE))
-  - task: retrieve-a-particular-app
-    file: cc-api-tests/tasks/retrieve_a_particular_app/task.yml
-    params:
-      PIPELINE: ((PIPELINE))
-  - task: retrieving-permissions-on-a-app
-    file: cc-api-tests/tasks/retrieving_permissions_on_a_app/task.yml
-    params:
-      PIPELINE: ((PIPELINE))
-  - task: get-the-env-for-an-app
-    file: cc-api-tests/tasks/get_the_env_for_an_app/task.yml
-    params:
-      PIPELINE: ((PIPELINE))
+  - aggregate:
+    - task: list-all-apps
+      file: cc-api-tests/tasks/list_all_apps/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+      input_mapping: {cc-api-output-creating-a-space: cc-api-tests-bucket}
+    - task: get-app-summary
+      file: cc-api-tests/tasks/get_app_summary/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+    - task: list-all-routes-for-the-app
+      file: cc-api-tests/tasks/list_all_routes_for_the_app/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+    - task: list-all-service-bindings-for-the-app
+      file: cc-api-tests/tasks/list_all_service_bindings_for_the_app/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+    - task: retrieve-a-particular-app
+      file: cc-api-tests/tasks/retrieve_a_particular_app/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+    - task: retrieving-permissions-on-a-app
+      file: cc-api-tests/tasks/retrieving_permissions_on_a_app/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+    - task: get-the-env-for-an-app
+      file: cc-api-tests/tasks/get_the_env_for_an_app/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
   - task: delete-a-particular-app
     file: cc-api-tests/tasks/delete_a_particular_app/task.yml
     params:
