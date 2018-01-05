@@ -98,30 +98,30 @@ jobs:
     file: cc-api-tests/tasks/delete_a_particular_app/task.yml
     params:
       PIPELINE: ((PIPELINE))
+  - task: rollup-input-apps-test
+    file: cc-api-tests/tasks/rollup_input_apps_test/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
+  - put: cc-api-tests-bucket
+    params:
+      file: cc-api-output-rollup-input/((PIPELINE)).txt
 
-# - name: delete-a-particular-space
-#   plan:
-#   - get: cc-api-tests
-#   - get: cc-api-tests-bucket
-#     trigger: true
-#     passed:
-#     - delete-a-particular-app
-#   - task: delete-a-particular-space
-#     file: cc-api-tests/tasks/delete_a_particular_space/task.yml
-#     params:
-#       PIPELINE: ((PIPELINE))
-#   - put: cc-api-tests-bucket
-#     params:
-#       file: cc-api-tests-put-bucket/((PIPELINE)).txt
-
-# - name: delete-a-particular-organization
-#   plan:
-#   - get: cc-api-tests
-#   - get: cc-api-tests-bucket
-#     trigger: true
-#     passed:
-#     - delete-a-particular-space
-#   - task: delete-a-particular-organization
-#     file: cc-api-tests/tasks/delete_a_particular_organization/task.yml
-#     params:
-#       PIPELINE: ((PIPELINE))
+- name: teardown
+  serial: true
+  serial_groups: [((PIPELINE))]
+  plan:
+  - get: cc-api-tests
+  - get: cc-api-tests-bucket
+    trigger: true
+    passed:
+    - test
+  - task: delete-a-particular-space
+    file: cc-api-tests/tasks/delete_a_particular_space/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
+    input_mapping: {cc-api-output-creating-a-space: cc-api-tests-bucket}
+  - task: delete-a-particular-organization
+    file: cc-api-tests/tasks/delete_a_particular_organization/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
+    input_mapping: {cc-api-output-creating-an-organization: cc-api-tests-bucket}
