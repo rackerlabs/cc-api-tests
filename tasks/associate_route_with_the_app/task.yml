@@ -1,0 +1,18 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: quay.io/mpcf/cc-api-tests
+
+inputs:
+  - name: cc-api-tests
+  - name: cc-api-output-creating-an-app
+  - name: cc-api-output-creating-a-route
+
+run:
+  path: cc-api-tests/tasks/associate_route_with_the_app/task.sh
+
+params:
+  PIPELINE:

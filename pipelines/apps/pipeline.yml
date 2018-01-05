@@ -99,6 +99,11 @@ jobs:
       file: cc-api-tests/tasks/get_the_env_for_an_app/task.yml
       params:
         PIPELINE: ((PIPELINE))
+  - task: associate-route-with-the-app
+    file: cc-api-tests/tasks/associate_route_with_the_app/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
+    input_mapping: {cc-api-output-creating-a-route: cc-api-tests-bucket}
   - task: delete-a-particular-app
     file: cc-api-tests/tasks/delete_a_particular_app/task.yml
     params:
