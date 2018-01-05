@@ -86,87 +86,18 @@ jobs:
     file: cc-api-tests/tasks/retrieve_a_particular_app/task.yml
     params:
       PIPELINE: ((PIPELINE))
-
-# - name: retrieving-permissions-on-a-app
-#   plan:
-#   - get: cc-api-tests
-#   - get: cc-api-tests-bucket
-#     trigger: true
-#     passed:
-#     - creating-an-app
-#   - task: retrieving-permissions-on-a-app
-#     file: cc-api-tests/tasks/retrieving_permissions_on_a_app/task.yml
-#     params:
-#       PIPELINE: ((PIPELINE))
-#   - put: cc-api-tests-bucket
-#     params:
-#       file: cc-api-tests-put-bucket/((PIPELINE)).txt
-
-# - name: get-the-env-for-an-app
-#   plan:
-#   - get: cc-api-tests
-#   - get: cc-api-tests-bucket
-#     trigger: true
-#     passed:
-#     - creating-an-app
-#   - task: get-the-env-for-an-app
-#     file: cc-api-tests/tasks/get_the_env_for_an_app/task.yml
-#     params:
-#       PIPELINE: ((PIPELINE))
-#   - put: cc-api-tests-bucket
-#     params:
-#       file: cc-api-tests-put-bucket/((PIPELINE)).txt
-
-# - name: create-a-shared-domain
-#   plan:
-#   - get: cc-api-tests
-#   - get: cc-api-tests-bucket
-#     trigger: true
-#     passed:
-#     - auth-with-uaa
-#   - task: create-a-shared-domain
-#     file: cc-api-tests/tasks/create_a_shared_domain/task.yml
-#     params:
-#       PIPELINE: ((PIPELINE))
-#   - put: cc-api-tests-bucket
-#     params:
-#       file: cc-api-tests-put-bucket/((PIPELINE)).txt
-
-# - name: creating-a-route
-#   plan:
-#   - get: cc-api-tests
-#   - get: cc-api-tests-bucket
-#     trigger: true
-#     passed:
-#     - creating-a-space
-#     - create-a-shared-domain
-#   - task: creating-a-route
-#     file: cc-api-tests/tasks/creating_a_route/task.yml
-#     params:
-#       PIPELINE: ((PIPELINE))
-#   - put: cc-api-tests-bucket
-#     params:
-#       file: cc-api-tests-put-bucket/((PIPELINE)).txt
-
-# - name: delete-a-particular-app
-#   plan:
-#   - get: cc-api-tests
-#   - get: cc-api-tests-bucket
-#     trigger: true
-#     passed:
-#     - get-app-summary
-#     - list-all-routes-for-the-app
-#     - list-all-service-bindings-for-the-app
-#     - retrieve-a-particular-app
-#     - retrieving-permissions-on-a-app
-#     - get-the-env-for-an-app
-#   - task: delete-a-particular-app
-#     file: cc-api-tests/tasks/delete_a_particular_app/task.yml
-#     params:
-#       PIPELINE: ((PIPELINE))
-#   - put: cc-api-tests-bucket
-#     params:
-#       file: cc-api-tests-put-bucket/((PIPELINE)).txt
+  - task: retrieving-permissions-on-a-app
+    file: cc-api-tests/tasks/retrieving_permissions_on_a_app/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
+  - task: get-the-env-for-an-app
+    file: cc-api-tests/tasks/get_the_env_for_an_app/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
+  - task: delete-a-particular-app
+    file: cc-api-tests/tasks/delete_a_particular_app/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
 
 # - name: delete-a-particular-space
 #   plan:
