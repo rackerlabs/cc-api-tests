@@ -45,6 +45,8 @@ jobs:
       PIPELINE: ((PIPELINE))
   - task: rollup-input
     file: cc-api-tests/tasks/rollup_input/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
   - put: cc-api-tests-bucket
     params:
       file: cc-api-output-rollup-input/((PIPELINE)).txt
@@ -64,7 +66,11 @@ jobs:
     params:
       PIPELINE: ((PIPELINE))
     input_mapping: {cc-api-output-creating-a-space: cc-api-tests-bucket}
-
+  - task:
+    file: cc-api-tests/tasks/list_all_apps/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
+    input_mapping: {cc-api-output-creating-a-space: cc-api-tests-bucket}
 # - name: list-all-apps
 #   plan:
 #   - get: cc-api-tests
