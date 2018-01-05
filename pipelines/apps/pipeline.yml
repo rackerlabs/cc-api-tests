@@ -71,32 +71,10 @@ jobs:
     params:
       PIPELINE: ((PIPELINE))
     input_mapping: {cc-api-output-creating-a-space: cc-api-tests-bucket}
-# - name: list-all-apps
-#   plan:
-#   - get: cc-api-tests
-#   - get: cc-api-tests-bucket
-#     trigger: true
-#     passed:
-#     - auth-with-uaa
-#   - task: list-all-apps
-#     file: cc-api-tests/tasks/list_all_apps/task.yml
-#     params:
-#       PIPELINE: ((PIPELINE))
-
-# - name: get-app-summary
-#   plan:
-#   - get: cc-api-tests
-#   - get: cc-api-tests-bucket
-#     trigger: true
-#     passed:
-#     - creating-an-app
-#   - task: get-app-summary
-#     file: cc-api-tests/tasks/get_app_summary/task.yml
-#     params:
-#       PIPELINE: ((PIPELINE))
-#   - put: cc-api-tests-bucket
-#     params:
-#       file: cc-api-tests-put-bucket/((PIPELINE)).txt
+  - task: get-app-summary
+    file: cc-api-tests/tasks/get_app_summary/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
 
 # - name: list-all-routes-for-the-app
 #   plan:

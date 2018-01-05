@@ -8,10 +8,7 @@ image_resource:
 
 inputs:
   - name: cc-api-tests
-  - name: cc-api-tests-bucket
-outputs:
-  - name: cc-api-tests-put-bucket
-
+  - name: cc-api-tests-creating-an-app
 
 run:
   path: cc-api-tests/tasks/get_app_summary/task.sh
