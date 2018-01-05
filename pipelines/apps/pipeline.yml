@@ -83,22 +83,10 @@ jobs:
     file: cc-api-tests/tasks/list_all_service_bindings_for_the_app/task.yml
     params:
       PIPELINE: ((PIPELINE))
-
-# - name: retrieve-a-particular-app
-#   plan:
-#   - get: cc-api-tests
-#   - get: cc-api-tests-bucket
-#     trigger: true
-#     passed:
-#     - creating-an-app
-#   - task: retrieve-a-particular-app
-#     file: cc-api-tests/tasks/retrieve_a_particular_app/task.yml
-#     params:
-#       PIPELINE: ((PIPELINE))
-#   - put: cc-api-tests-bucket
-#     params:
-#       file: cc-api-tests-put-bucket/((PIPELINE)).txt
-
+  - task: retrieve-a-particular-app
+    file: cc-api-tests/tasks/retrieve_a_particular_app/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
 
 # - name: retrieving-permissions-on-a-app
 #   plan:
