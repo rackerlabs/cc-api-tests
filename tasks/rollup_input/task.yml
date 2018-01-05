@@ -12,6 +12,7 @@ inputs:
   - name: cc-api-output-create-a-shared-domain
   - name: cc-api-output-creating-an-organization
   - name: cc-api-output-creating-a-space
+  - name: cc-api-output-creating-a-route
 outputs:
   - name: cc-api-output-rollup-input
 

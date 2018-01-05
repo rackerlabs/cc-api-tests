@@ -43,6 +43,10 @@ jobs:
     file: cc-api-tests/tasks/creating_a_space/task.yml
     params:
       PIPELINE: ((PIPELINE))
+  - task: creating-a-route
+    file: cc-api-tests/tasks/creating_a_route/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
   - task: rollup-input
     file: cc-api-tests/tasks/rollup_input/task.yml
     params:

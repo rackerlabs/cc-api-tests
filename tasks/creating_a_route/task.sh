@@ -4,6 +4,5 @@ set -e
 source cc-api-tests/util/functions.sh
 source cc-api-tests/util/read_env_vars_from_file.sh
 
-run_test creating_a_route CF_ROUTE_GUID .metadata.guid
-
-write_env_vars_to_file
+CF_ROUTE_GUID=$(pyresttest https://$CF_API_URL cc-api-tests/tasks/creating_a_route/test.yml --print-bodies=true | sed '$d' | jq -r .metadata.guid)
+export CF_ROUTE_GUID
