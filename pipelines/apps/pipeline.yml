@@ -75,6 +75,10 @@ jobs:
     file: cc-api-tests/tasks/get_app_summary/task.yml
     params:
       PIPELINE: ((PIPELINE))
+  - task: list-all-routes-for-the-app
+    file: cc-api-tests/tasks/list_all_routes_for_the_app/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
 
 # - name: list-all-routes-for-the-app
 #   plan:
