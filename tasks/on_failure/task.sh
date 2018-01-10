@@ -9,7 +9,7 @@ else
     post_to_datadog 0
     curl  -X POST -H "Content-type: application/json" \
 	  -d '{
-      "title": "API Test Failure for ${FOUNDATION}.${PIPELINE}.${TASK}",
+      "title": "API Test Failure for '${FOUNDATION}.${PIPELINE}.${TASK}'",
       "text": "Reported.",
       "priority": "normal",
       "tags": ["application:cc-api-tests"],
