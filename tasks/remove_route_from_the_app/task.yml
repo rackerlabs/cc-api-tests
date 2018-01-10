@@ -8,14 +8,11 @@ image_resource:
 
 inputs:
   - name: cc-api-tests
-  - name: cc-api-output-create-a-shared-domain
-  - name: cc-api-output-creating-a-space
-outputs:
+  - name: cc-api-output-creating-an-app
   - name: cc-api-output-creating-a-route
 
 run:
-  path: cc-api-tests/tasks/creating_a_route/task.sh
+  path: cc-api-tests/tasks/remove_route_from_the_app/task.sh
 
 params:
   PIPELINE:
-  OUTPUT: cc-api-output-creating-a-route
