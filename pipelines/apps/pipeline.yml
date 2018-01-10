@@ -108,6 +108,7 @@ jobs:
     file: cc-api-tests/tasks/remove_route_from_the_app/task.yml
     params:
       PIPELINE: ((PIPELINE))
+    input_mapping: {cc-api-output-creating-a-route: cc-api-tests-bucket}
   - task: delete-a-particular-app
     file: cc-api-tests/tasks/delete_a_particular_app/task.yml
     params:
