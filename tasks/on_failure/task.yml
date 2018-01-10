@@ -6,6 +6,9 @@ image_resource:
   source:
     repository: quay.io/mpcf/cc-api-tests
 
+inputs:
+  - name: cc-api-tests
+
 run:
   path: cc-api-tests/tasks/on_failure/task.sh
 
