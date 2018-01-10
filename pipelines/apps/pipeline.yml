@@ -36,6 +36,7 @@ jobs:
       params:
         PIPELINE: ((PIPELINE))
         DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
     - task: creating-an-organization
       file: cc-api-tests/tasks/creating_an_organization/task.yml
       params:

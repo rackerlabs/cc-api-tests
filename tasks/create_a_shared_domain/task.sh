@@ -8,4 +8,4 @@ CF_SHARED_DOMAIN_GUID=$(pyresttest https://$CF_API_URL cc-api-tests/tasks/create
 export CF_SHARED_DOMAIN_GUID
 write_env_vars_to_file
 
-post_success_to_datadog
+post_to_datadog 1

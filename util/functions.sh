@@ -18,17 +18,21 @@ function run_test () {
     fi
     }
 
-function post_success_to_datadog () {
-    currenttime=$(date +%s)
+function post_to_datadog () {
+    if [ -z "${DATADOG_API_KEY}" ]; then
+	exit
+    else
+	currenttime=$(date +%s)
 
-    curl  -X POST -H "Content-type: application/json" \
-	  -d "{ \"series\" :
-         [{\"metric\":\"cc_api_tests.${PIPELINE}.${TASK}.success\",
-          \"points\":[[$currenttime, 1]],
+	curl  -X POST -H "Content-type: application/json" \
+	      -d "{ \"series\" :
+         [{\"metric\":\"cc_api_tests.${FOUNDATION}.${PIPELINE}.${TASK}\",
+          \"points\":[[$currenttime, ${1}]],
           \"type\":\"gauge\",
-          \"host\":\"concourse\",
+          \"host\":\"${FOUNDATION}\",
           \"tags\":[\"application:cc-api-tests\"]}
-        ]
+         ]
     }" \
-	  "https://app.datadoghq.com/api/v1/series?api_key=${DATADOG_API_KEY}"
-    }
+	      "https://app.datadoghq.com/api/v1/series?api_key=${DATADOG_API_KEY}"
+    fi
+}
