@@ -19,3 +19,4 @@ run:
 
 params:
   PIPELINE:
+  OUTPUT: cc-api-output-creating-a-route
