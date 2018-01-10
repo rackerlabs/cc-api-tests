@@ -1,6 +1,8 @@
 #!/bin/bash
 set -eu
 
+source cc-api-tests/util/functions.sh
+
 if [ -z "${DATADOG_API_KEY}" ]; then
 	exit
 else
