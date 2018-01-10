@@ -39,7 +39,7 @@ jobs:
         FOUNDATION: ((FOUNDATION))
       on_failure:
         task: failure-notify
-        file: cc-api-tests/tasks/on_failure/task/yml
+        file: cc-api-tests/tasks/on_failure/task.yml
         params:
           PIPELINE: ((PIPELINE))
           DATADOG_API_KEY: ((DATADOG_API_KEY))
