@@ -37,6 +37,14 @@ jobs:
         PIPELINE: ((PIPELINE))
         DATADOG_API_KEY: ((DATADOG_API_KEY))
         FOUNDATION: ((FOUNDATION))
+      on_failure:
+        task: failure-notify
+        file: cc-api-tests/tasks/on_failure/task/yml
+        params:
+          PIPELINE: ((PIPELINE))
+          DATADOG_API_KEY: ((DATADOG_API_KEY))
+          FOUNDATION: ((FOUNDATION))
+          TASK: create-a-shared-domain
     - task: creating-an-organization
       file: cc-api-tests/tasks/creating_an_organization/task.yml
       params:
