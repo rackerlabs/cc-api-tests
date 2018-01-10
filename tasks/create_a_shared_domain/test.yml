@@ -3,14 +3,14 @@
     - testset: "API"
     - generators:
         - 'cf_api_url': {type: 'env_variable', variable_name: 'CF_API_URL'}
-        - 'cf_auth_token': {type: 'env_variable', variable_name: 'CF_AUTH_TOKEN'}
+        - 'auth_token': {type: 'env_variable', variable_name: 'AUTH_TOKEN'}
         - 'random_name': {type: 'random_text', character_set: 'letters'}
 
 - test:
-    - generator_binds: {cf_api_url: cf_api_url, cf_auth_token: cf_auth_token, random_name: random_name}
+    - generator_binds: {cf_api_url: cf_api_url, auth_token: auth_token, random_name: random_name}
     - name: "create-a-shared-domain"
     - url: {template: "https://$cf_api_url/v2/shared_domains"}
     - method: "POST"
     - body: {template: '{"name": "$random_name.com"}'}
-    - headers: {template: {'Content-Type': 'application/json', 'Authorization': 'Bearer $cf_auth_token'}}
+    - headers: {template: {'Content-Type': 'application/json', 'Authorization': 'Bearer $auth_token'}}
     - expected_status: [201]

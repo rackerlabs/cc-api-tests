@@ -10,7 +10,7 @@ inputs:
   - name: cc-api-tests
   - name: cc-api-output-creating-an-app
   - name: cc-api-output-creating-a-route
-
+  - name: cc-api-output-auth
 run:
   path: cc-api-tests/tasks/associate_route_with_the_app/task.sh
 

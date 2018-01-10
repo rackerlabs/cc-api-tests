@@ -64,6 +64,15 @@ jobs:
     trigger: true
     passed:
     - setup
+  - task: auth
+    file: cc-api-tests/tasks/auth/task.yml
+    params:
+      USERNAME: ((USERNAME))
+      PASSWORD: ((PASSWORD))
+      CLIENT_ID: ((CLIENT_ID))
+      LOGIN_URL: ((LOGIN_URL))
+      CF_API_URL: ((CF_API_URL))
+      PIPELINE: ((PIPELINE))
   - task: creating-an-app
     file: cc-api-tests/tasks/creating_an_app/task.yml
     params:
@@ -130,6 +139,15 @@ jobs:
     trigger: true
     passed:
     - test
+  - task: auth
+    file: cc-api-tests/tasks/auth/task.yml
+    params:
+      USERNAME: ((USERNAME))
+      PASSWORD: ((PASSWORD))
+      CLIENT_ID: ((CLIENT_ID))
+      LOGIN_URL: ((LOGIN_URL))
+      CF_API_URL: ((CF_API_URL))
+      PIPELINE: ((PIPELINE))
   - task: delete-a-particular-route
     file: cc-api-tests/tasks/delete_a_particular_route/task.yml
     params:

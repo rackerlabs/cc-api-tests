@@ -8,7 +8,6 @@ image_resource:
 
 inputs:
   - name: cc-api-tests
-  - name: cc-api-output-auth
   - name: cc-api-output-create-a-shared-domain
   - name: cc-api-output-creating-an-organization
   - name: cc-api-output-creating-a-space

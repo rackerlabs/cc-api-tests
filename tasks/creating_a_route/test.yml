@@ -3,15 +3,15 @@
     - testset: "API"
     - generators:
         - 'cf_api_url': {type: 'env_variable', variable_name: 'CF_API_URL'}
-        - 'cf_auth_token': {type: 'env_variable', variable_name: 'CF_AUTH_TOKEN'}
+        - 'auth_token': {type: 'env_variable', variable_name: 'AUTH_TOKEN'}
         - 'cf_shared_domain_guid': {type: 'env_variable', variable_name: 'CF_SHARED_DOMAIN_GUID'}
         - 'cf_space_guid': {type: 'env_variable', variable_name: 'CF_SPACE_GUID'}
 
 - test:
-    - generator_binds: {cf_api_url: cf_api_url, cf_auth_token: cf_auth_token, cf_shared_domain_guid: cf_shared_domain_guid, cf_space_guid: cf_space_guid}
+    - generator_binds: {cf_api_url: cf_api_url, auth_token: auth_token, cf_shared_domain_guid: cf_shared_domain_guid, cf_space_guid: cf_space_guid}
     - name: "creating-a-route"
     - url: {template: "https://$cf_api_url/v2/routes"}
     - method: "POST"
     - body: {template: '{"domain_guid": "$cf_shared_domain_guid", "space_guid": "$cf_space_guid", "host": "example"}'}
-    - headers: {template: {'Content-Type': 'application/json', 'Authorization': 'Bearer $cf_auth_token'}}
+    - headers: {template: {'Content-Type': 'application/json', 'Authorization': 'Bearer $auth_token'}}
     - expected_status: [201]
