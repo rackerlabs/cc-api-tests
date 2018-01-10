@@ -17,3 +17,18 @@ function run_test () {
 	export ${2}
     fi
     }
+
+function post_success_to_datadog () {
+    currenttime=$(date +%s)
+
+    curl  -X POST -H "Content-type: application/json" \
+	  -d "{ \"series\" :
+         [{\"metric\":\"cc_api_tests.${PIPELINE}.${TASK}.success\",
+          \"points\":[[$currenttime, 1]],
+          \"type\":\"gauge\",
+          \"host\":\"concourse\",
+          \"tags\":[\"application:cc-api-tests\"]}
+        ]
+    }" \
+	  "https://app.datadoghq.com/api/v1/series?api_key=${DATADOG_API_KEY}"
+    }

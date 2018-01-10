@@ -18,5 +18,7 @@ run:
 
 params:
   PIPELINE:
+  DATADOG_API_KEY:
   INPUT: cc-api-output-auth
   OUTPUT: cc-api-output-create-a-shared-domain
+  TASK: create-a-shared-domain

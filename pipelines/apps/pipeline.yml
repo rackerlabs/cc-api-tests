@@ -35,6 +35,7 @@ jobs:
       file: cc-api-tests/tasks/create_a_shared_domain/task.yml
       params:
         PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
     - task: creating-an-organization
       file: cc-api-tests/tasks/creating_an_organization/task.yml
       params:
