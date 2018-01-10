@@ -130,6 +130,11 @@ jobs:
     trigger: true
     passed:
     - test
+  - task: delete-a-particular-route
+    file: cc-api-tests/tasks/delete_a_particular_route/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
+    input_mapping: {cc-api-output-creating-a-route: cc-api-tests-bucket}
   - task: delete-a-particular-space
     file: cc-api-tests/tasks/delete_a_particular_space/task.yml
     params:

@@ -1,0 +1,15 @@
+---
+- config:
+    - testset: "API"
+    - generators:
+        - 'cf_api_url': {type: 'env_variable', variable_name: 'CF_API_URL'}
+        - 'cf_auth_token': {type: 'env_variable', variable_name: 'CF_AUTH_TOKEN'}
+        - 'cf_route_guid': {type: 'env_variable', variable_name: 'CF_ROUTE_GUID'}
+
+- test:
+    - generator_binds: {cf_api_url: cf_api_url, cf_auth_token: cf_auth_token, cf_route_guid: cf_route_guid}
+    - name: "delete-a-particular-route"
+    - url: {template: "https://$cf_api_url/v2/routes/$cf_route_guid"}
+    - method: "DELETE"
+    - headers: {template: {'Content-Type': 'application/json', 'Authorization': 'Bearer $cf_auth_token'}}
+    - expected_status: [204]
