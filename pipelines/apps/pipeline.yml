@@ -357,6 +357,21 @@ jobs:
         FOUNDATION: ((FOUNDATION))
         TASK: delete-a-particular-route
     input_mapping: {cc-api-output-creating-a-route: cc-api-tests-bucket}
+  - task: delete-a-particular-source-app
+    file: cc-api-tests/tasks/delete_a_particular_source_app/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
+      DATADOG_API_KEY: ((DATADOG_API_KEY))
+      FOUNDATION: ((FOUNDATION))
+    on_failure:
+      task: failure-notify
+      file: cc-api-tests/tasks/on_failure/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+        TASK: delete-a-particular-source-app
+    input_mapping: {cc-api-output-creating-a-source-app: cc-api-tests-bucket}
   - task: delete-a-particular-space
     file: cc-api-tests/tasks/delete_a_particular_space/task.yml
     params:
