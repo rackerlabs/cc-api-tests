@@ -178,6 +178,21 @@ jobs:
           FOUNDATION: ((FOUNDATION))
           TASK: list-all-apps
       input_mapping: {cc-api-output-creating-a-space: cc-api-tests-bucket}
+    - task: copy-the-app-bits-for-an-app
+      file: cc-api-tests/tasks/copy_the_app_bits_for_an_app/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+      on_failure:
+        task: failure-notify
+        file: cc-api-tests/tasks/on_failure/task.yml
+        params:
+          PIPELINE: ((PIPELINE))
+          DATADOG_API_KEY: ((DATADOG_API_KEY))
+          FOUNDATION: ((FOUNDATION))
+          TASK: copy-the-app-bits-for-an-app
+      input_mapping: {cc-api-output-creating-a-source-app: cc-api-tests-bucket}
     - task: get-app-summary
       file: cc-api-tests/tasks/get_app_summary/task.yml
       params:

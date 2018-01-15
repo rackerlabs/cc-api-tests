@@ -1,0 +1,22 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: quay.io/mpcf/cc-api-tests
+
+inputs:
+  - name: cc-api-tests
+  - name: cc-api-output-auth
+  - name: cc-api-output-creating-a-source-app
+  - name: cc-api-output-creating-an-app
+
+run:
+  path: cc-api-tests/tasks/copy_the_app_bits_for_an_app/task.sh
+
+params:
+  PIPELINE:
+  DATADOG_API_KEY:
+  FOUNDATION:
+  TASK: copy-the-app-bits-for-an-app
