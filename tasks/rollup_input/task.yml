@@ -12,6 +12,7 @@ inputs:
   - name: cc-api-output-creating-an-organization
   - name: cc-api-output-creating-a-space
   - name: cc-api-output-creating-a-route
+  - name: cc-api-output-creating-a-source-app
 outputs:
   - name: cc-api-output-rollup-input
 
