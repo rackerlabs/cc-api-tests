@@ -14,7 +14,6 @@ run:
   path: cc-api-tests/tasks/retrieve_a_particular_app_usage_event/task.sh
 
 params:
-  INPUT: cc-api-output-list-all-app-usage-events
   DATADOG_API_KEY:
   FOUNDATION:
   TASK: retrieve_a_particular_app_usage_event

@@ -17,7 +17,6 @@ run:
 
 params:
   PIPELINE:
-  INPUT: cc-api-output-auth
   OUTPUT: cc-api-output-creating-an-organization
   DATADOG_API_KEY:
   FOUNDATION:
