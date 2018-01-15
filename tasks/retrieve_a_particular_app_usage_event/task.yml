@@ -15,3 +15,6 @@ run:
 
 params:
   INPUT: cc-api-output-list-all-app-usage-events
+  DATADOG_API_KEY:
+  FOUNDATION:
+  TASK: retrieve_a_particular_app_usage_event

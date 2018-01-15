@@ -16,3 +16,6 @@ run:
 
 params:
   PIPELINE:
+  DATADOG_API_KEY:
+  FOUNDATION:
+  TASK: get_app_summary

@@ -30,6 +30,16 @@ jobs:
       LOGIN_URL: ((LOGIN_URL))
       CF_API_URL: ((CF_API_URL))
       PIPELINE: ((PIPELINE))
+      DATADOG_API_KEY: ((DATADOG_API_KEY))
+      FOUNDATION: ((FOUNDATION))
+    on_failure:
+      task: failure-notify
+      file: cc-api-tests/tasks/on_failure/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+        TASK: auth
   - aggregate:
     - task: create-a-shared-domain
       file: cc-api-tests/tasks/create_a_shared_domain/task.yml
@@ -49,14 +59,58 @@ jobs:
       file: cc-api-tests/tasks/creating_an_organization/task.yml
       params:
         PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+      on_failure:
+        task: failure-notify
+        file: cc-api-tests/tasks/on_failure/task.yml
+        params:
+          PIPELINE: ((PIPELINE))
+          DATADOG_API_KEY: ((DATADOG_API_KEY))
+          FOUNDATION: ((FOUNDATION))
+          TASK: creating-an-organization
   - task: creating-a-space
     file: cc-api-tests/tasks/creating_a_space/task.yml
     params:
       PIPELINE: ((PIPELINE))
+      DATADOG_API_KEY: ((DATADOG_API_KEY))
+      FOUNDATION: ((FOUNDATION))
+    on_failure:
+      task: failure-notify
+      file: cc-api-tests/tasks/on_failure/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+        TASK: creating-a-space
+  - task: creating-a-source-app
+    file: cc-api-tests/tasks/creating_a_source_app/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
+      DATADOG_API_KEY: ((DATADOG_API_KEY))
+      FOUNDATION: ((FOUNDATION))
+    on_failure:
+      task: failure-notify
+      file: cc-api-tests/tasks/on_failure/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+        TASK: creating-a-source-app
   - task: creating-a-route
     file: cc-api-tests/tasks/creating_a_route/task.yml
     params:
       PIPELINE: ((PIPELINE))
+      DATADOG_API_KEY: ((DATADOG_API_KEY))
+      FOUNDATION: ((FOUNDATION))
+    on_failure:
+      task: failure-notify
+      file: cc-api-tests/tasks/on_failure/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+        TASK: creating-a-route
   - task: rollup-input
     file: cc-api-tests/tasks/rollup_input/task.yml
     params:
@@ -83,55 +137,175 @@ jobs:
       LOGIN_URL: ((LOGIN_URL))
       CF_API_URL: ((CF_API_URL))
       PIPELINE: ((PIPELINE))
+      DATADOG_API_KEY: ((DATADOG_API_KEY))
+      FOUNDATION: ((FOUNDATION))
+    on_failure:
+      task: failure-notify
+      file: cc-api-tests/tasks/on_failure/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+        TASK: auth
   - task: creating-an-app
     file: cc-api-tests/tasks/creating_an_app/task.yml
     params:
       PIPELINE: ((PIPELINE))
+      DATADOG_API_KEY: ((DATADOG_API_KEY))
+      FOUNDATION: ((FOUNDATION))
+    on_failure:
+      task: failure-notify
+      file: cc-api-tests/tasks/on_failure/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+        TASK: creating-an-app
     input_mapping: {cc-api-output-creating-a-space: cc-api-tests-bucket}
   - aggregate:
     - task: list-all-apps
       file: cc-api-tests/tasks/list_all_apps/task.yml
       params:
         PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+      on_failure:
+        task: failure-notify
+        file: cc-api-tests/tasks/on_failure/task.yml
+        params:
+          PIPELINE: ((PIPELINE))
+          DATADOG_API_KEY: ((DATADOG_API_KEY))
+          FOUNDATION: ((FOUNDATION))
+          TASK: list-all-apps
       input_mapping: {cc-api-output-creating-a-space: cc-api-tests-bucket}
     - task: get-app-summary
       file: cc-api-tests/tasks/get_app_summary/task.yml
       params:
         PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+      on_failure:
+        task: failure-notify
+        file: cc-api-tests/tasks/on_failure/task.yml
+        params:
+          PIPELINE: ((PIPELINE))
+          DATADOG_API_KEY: ((DATADOG_API_KEY))
+          FOUNDATION: ((FOUNDATION))
+          TASK: get-app-summary
     - task: list-all-routes-for-the-app
       file: cc-api-tests/tasks/list_all_routes_for_the_app/task.yml
       params:
         PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+      on_failure:
+        task: failure-notify
+        file: cc-api-tests/tasks/on_failure/task.yml
+        params:
+          PIPELINE: ((PIPELINE))
+          DATADOG_API_KEY: ((DATADOG_API_KEY))
+          FOUNDATION: ((FOUNDATION))
+          TASK: list-all-routes-for-the-app
     - task: list-all-service-bindings-for-the-app
       file: cc-api-tests/tasks/list_all_service_bindings_for_the_app/task.yml
       params:
         PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+      on_failure:
+        task: failure-notify
+        file: cc-api-tests/tasks/on_failure/task.yml
+        params:
+          PIPELINE: ((PIPELINE))
+          DATADOG_API_KEY: ((DATADOG_API_KEY))
+          FOUNDATION: ((FOUNDATION))
+          TASK: list-all-service-bindings-for-the-app
     - task: retrieve-a-particular-app
       file: cc-api-tests/tasks/retrieve_a_particular_app/task.yml
       params:
         PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+      on_failure:
+        task: failure-notify
+        file: cc-api-tests/tasks/on_failure/task.yml
+        params:
+          PIPELINE: ((PIPELINE))
+          DATADOG_API_KEY: ((DATADOG_API_KEY))
+          FOUNDATION: ((FOUNDATION))
+          TASK: retrieve-a-particular-app
     - task: retrieving-permissions-on-a-app
       file: cc-api-tests/tasks/retrieving_permissions_on_a_app/task.yml
       params:
         PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+      on_failure:
+        task: failure-notify
+        file: cc-api-tests/tasks/on_failure/task.yml
+        params:
+          PIPELINE: ((PIPELINE))
+          DATADOG_API_KEY: ((DATADOG_API_KEY))
+          FOUNDATION: ((FOUNDATION))
+          TASK: retrieving-permissions-on-a-app
     - task: get-the-env-for-an-app
       file: cc-api-tests/tasks/get_the_env_for_an_app/task.yml
       params:
         PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+      on_failure:
+        task: failure-notify
+        file: cc-api-tests/tasks/on_failure/task.yml
+        params:
+          PIPELINE: ((PIPELINE))
+          DATADOG_API_KEY: ((DATADOG_API_KEY))
+          FOUNDATION: ((FOUNDATION))
+          TASK: get-the-env-for-an-app
   - task: associate-route-with-the-app
     file: cc-api-tests/tasks/associate_route_with_the_app/task.yml
     params:
       PIPELINE: ((PIPELINE))
+      DATADOG_API_KEY: ((DATADOG_API_KEY))
+      FOUNDATION: ((FOUNDATION))
+    on_failure:
+      task: failure-notify
+      file: cc-api-tests/tasks/on_failure/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+        TASK: associate-route-with-the-app
     input_mapping: {cc-api-output-creating-a-route: cc-api-tests-bucket}
   - task: remove-route-from-the-app
     file: cc-api-tests/tasks/remove_route_from_the_app/task.yml
     params:
       PIPELINE: ((PIPELINE))
+      DATADOG_API_KEY: ((DATADOG_API_KEY))
+      FOUNDATION: ((FOUNDATION))
+    on_failure:
+      task: failure-notify
+      file: cc-api-tests/tasks/on_failure/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+        TASK: remove-route-from-the-app
     input_mapping: {cc-api-output-creating-a-route: cc-api-tests-bucket}
   - task: delete-a-particular-app
     file: cc-api-tests/tasks/delete_a_particular_app/task.yml
     params:
       PIPELINE: ((PIPELINE))
+      DATADOG_API_KEY: ((DATADOG_API_KEY))
+      FOUNDATION: ((FOUNDATION))
+    on_failure:
+      task: failure-notify
+      file: cc-api-tests/tasks/on_failure/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+        TASK: delete-a-particular-app
   - task: rollup-input-apps-test
     file: cc-api-tests/tasks/rollup_input_apps_test/task.yml
     params:
@@ -158,18 +332,58 @@ jobs:
       LOGIN_URL: ((LOGIN_URL))
       CF_API_URL: ((CF_API_URL))
       PIPELINE: ((PIPELINE))
+      DATADOG_API_KEY: ((DATADOG_API_KEY))
+      FOUNDATION: ((FOUNDATION))
+    on_failure:
+      task: failure-notify
+      file: cc-api-tests/tasks/on_failure/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+        TASK: auth
   - task: delete-a-particular-route
     file: cc-api-tests/tasks/delete_a_particular_route/task.yml
     params:
       PIPELINE: ((PIPELINE))
+      DATADOG_API_KEY: ((DATADOG_API_KEY))
+      FOUNDATION: ((FOUNDATION))
+    on_failure:
+      task: failure-notify
+      file: cc-api-tests/tasks/on_failure/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+        TASK: delete-a-particular-route
     input_mapping: {cc-api-output-creating-a-route: cc-api-tests-bucket}
   - task: delete-a-particular-space
     file: cc-api-tests/tasks/delete_a_particular_space/task.yml
     params:
       PIPELINE: ((PIPELINE))
+      DATADOG_API_KEY: ((DATADOG_API_KEY))
+      FOUNDATION: ((FOUNDATION))
+    on_failure:
+      task: failure-notify
+      file: cc-api-tests/tasks/on_failure/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+        TASK: delete-a-particular-space
     input_mapping: {cc-api-output-creating-a-space: cc-api-tests-bucket}
   - task: delete-a-particular-organization
     file: cc-api-tests/tasks/delete_a_particular_organization/task.yml
     params:
       PIPELINE: ((PIPELINE))
+      DATADOG_API_KEY: ((DATADOG_API_KEY))
+      FOUNDATION: ((FOUNDATION))
+    on_failure:
+      task: failure-notify
+      file: cc-api-tests/tasks/on_failure/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+        TASK: delete-a-particular-organization
     input_mapping: {cc-api-output-creating-an-organization: cc-api-tests-bucket}

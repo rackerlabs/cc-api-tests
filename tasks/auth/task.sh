@@ -8,3 +8,5 @@ export AUTH_TOKEN
 echo "AUTH_TOKEN=${AUTH_TOKEN}" >> "${OUTPUT}/${PIPELINE}.txt"
 
 write_env_vars_to_file
+
+post_to_datadog 1

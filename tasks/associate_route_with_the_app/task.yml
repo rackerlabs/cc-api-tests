@@ -16,3 +16,6 @@ run:
 
 params:
   PIPELINE:
+  DATADOG_API_KEY:
+  FOUNDATION:
+  TASK: associate_route_with_the_app

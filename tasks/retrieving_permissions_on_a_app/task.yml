@@ -16,3 +16,6 @@ run:
 
 params:
   PIPELINE:
+  DATADOG_API_KEY:
+  FOUNDATION:
+  TASK: retrieving_permissions_on_a_app

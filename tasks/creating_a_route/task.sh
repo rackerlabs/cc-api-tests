@@ -10,3 +10,5 @@ CF_ROUTE_GUID=$(echo "${PYOUTPUT}" | sed '$d' | jq -r .metadata.guid)
 export CF_ROUTE_GUID
 
 write_env_vars_to_file
+
+post_to_datadog 1

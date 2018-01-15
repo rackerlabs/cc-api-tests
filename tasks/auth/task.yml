@@ -22,3 +22,6 @@ params:
   LOGIN_URL:
   CF_API_URL:
   PIPELINE:
+  DATADOG_API_KEY:
+  FOUNDATION:
+  TASK: auth

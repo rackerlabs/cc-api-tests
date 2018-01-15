@@ -8,3 +8,4 @@ CF_SPACE_GUID=$(pyresttest --print-bodies=true https://$CF_API_URL cc-api-tests/
 export CF_SPACE_GUID
 
 write_env_vars_to_file
+post_to_datadog 1

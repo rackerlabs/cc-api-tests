@@ -8,3 +8,5 @@ CF_ORGANIZATION_GUID=$(pyresttest https://$CF_API_URL cc-api-tests/tasks/creatin
 export CF_ORGANIZATION_GUID
 
 write_env_vars_to_file
+
+post_to_datadog 1

@@ -20,3 +20,6 @@ params:
   PIPELINE:
   INPUT: cc-api-output-creating-an-organization
   OUTPUT: cc-api-output-creating-a-space
+  DATADOG_API_KEY:
+  FOUNDATION:
+  TASK: creating_a_space

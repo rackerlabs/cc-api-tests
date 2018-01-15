@@ -17,3 +17,6 @@ run:
 
 params:
   PIPELINE:
+  DATADOG_API_KEY:
+  FOUNDATION:
+  TASK: remove_route_from_the_app

@@ -8,3 +8,4 @@ CF_APP_USAGE_EVENT_GUID=$(pyresttest --print-bodies=true https://$CF_API_URL cc-
 export CF_APP_USAGE_EVENT_GUID
 
 write_env_vars_to_file
+post_to_datadog 1

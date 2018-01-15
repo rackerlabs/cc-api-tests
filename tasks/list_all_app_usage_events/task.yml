@@ -18,3 +18,6 @@ params:
   INPUT: cc-api-output-auth
   OUTPUT: cc-api-output-list-all-app-usage-events
   PIPELINE:
+  DATADOG_API_KEY:
+  FOUNDATION:
+  TASK: list_all_app_usage_events

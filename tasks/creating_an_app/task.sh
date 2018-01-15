@@ -8,3 +8,5 @@ CF_APP_GUID=$(pyresttest https://$CF_API_URL cc-api-tests/tasks/creating_an_app/
 export CF_APP_GUID
 
 write_env_vars_to_file
+
+post_to_datadog 1
