@@ -14,7 +14,7 @@ outputs:
   - name: cc-api-output-creating-a-source-app
 
 run:
-  path: cc-api-tests/tasks/creating_an_app/task.sh
+  path: cc-api-tests/tasks/creating_a_source_app/task.sh
 
 params:
   PIPELINE:
