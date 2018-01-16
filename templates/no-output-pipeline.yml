@@ -1,15 +1,15 @@
-
-- name: TEST_NAME
-  plan:
-  - get: cc-api-tests
-  - get: cc-api-tests-bucket
-    trigger: true
-    passed:
-    - auth-with-uaa
-  - task: TEST_NAME
-    file: cc-api-tests/tasks/TEST_NAME_WITH_UNDERSCORES/task.yml
+# COPY / PASTE BELOW TO CORRECT STEP IN PIPELINE
+- task: TEST_NAME
+  file: cc-api-tests/tasks/TEST_NAME_WITH_UNDERSCORES/task.yml
+  params:
+    PIPELINE: ((PIPELINE))
+    DATADOG_API_KEY: ((DATADOG_API_KEY))
+    FOUNDATION: ((FOUNDATION))
+  on_failure:
+    task: failure-notify
+    file: cc-api-tests/tasks/on_failure/task.yml
     params:
       PIPELINE: ((PIPELINE))
-  - put: cc-api-tests-bucket
-    params:
-      file: cc-api-tests-put-bucket/((PIPELINE)).txt
+      DATADOG_API_KEY: ((DATADOG_API_KEY))
+      FOUNDATION: ((FOUNDATION))
+      TASK: TEST_NAME

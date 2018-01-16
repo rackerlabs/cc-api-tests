@@ -10,6 +10,8 @@ inputs:
   - name: cc-api-tests
   - name: cc-api-tests-bucket
 # Add required inputs here
+outputs:
+  - name: cc-api-tests-TEST_NAME
 
 run:
   path: cc-api-tests/tasks/TEST_NAME_WITH_UNDERSCORES/task.sh

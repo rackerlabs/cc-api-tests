@@ -9,13 +9,13 @@ image_resource:
 inputs:
   - name: cc-api-tests
   - name: cc-api-tests-bucket
-# Add required inputs here
+  - name: cc-api-output-creating-an-app
 
 run:
-  path: cc-api-tests/tasks/TEST_NAME_WITH_UNDERSCORES/task.sh
+  path: cc-api-tests/tasks/downloads_the_bits_for_an_app/task.sh
 
 params:
   PIPELINE:
   DATADOG_API_KEY:
   FOUNDATION:
-  TASK: TEST_NAME_WITH_UNDERSCORES
+  TASK: downloads_the_bits_for_an_app

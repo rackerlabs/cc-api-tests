@@ -26,15 +26,31 @@ cat templates/no-output-pipeline.yml |sed -e "s/TEST_NAME_WITH_UNDERSCORES/${TES
 
 mkdir tasks/"$TEST_NAME_WITH_UNDERSCORES"
 
-for x in no-output-task.sh no-output-test.yml no-output-task.yml; do
-    cat templates/$x | sed -e "s/TEST_NAME_WITH_UNDERSCORES/${TEST_NAME_WITH_UNDERSCORES}/g" \
-			   -e "s/TEST_NAME/${TEST_NAME}/g" \
-			   -e "s/CC_API_SECTION/${CC_API_SECTION}/g" \
-			   -e "s#REQUEST_PATH#${REQUEST_PATH}#g" \
-			   -e "s/REQUEST_METHOD/${REQUEST_METHOD}/g" \
-			   -e "s/OUTPUT_NAME/${OUTPUT_NAME}/g" \
-			   -e "s/RESPONSE_PATH/${RESPONSE_PATH}/g" \
-			   -e "s/EXPECTED_RESPONSE/${EXPECTED_RESPONSE}/g" > tasks/"$TEST_NAME_WITH_UNDERSCORES"/"$(echo $x | sed 's/no-output-//g')"
-done
+if [ -z "$OUTPUT_NAME" ]
+then
+    for x in no-output-task.sh no-output-test.yml no-output-task.yml; do
+	cat templates/$x | sed -e "s/TEST_NAME_WITH_UNDERSCORES/${TEST_NAME_WITH_UNDERSCORES}/g" \
+			       -e "s/TEST_NAME/${TEST_NAME}/g" \
+			       -e "s/CC_API_SECTION/${CC_API_SECTION}/g" \
+			       -e "s#REQUEST_PATH#${REQUEST_PATH}#g" \
+			       -e "s/REQUEST_METHOD/${REQUEST_METHOD}/g" \
+			       -e "s/OUTPUT_NAME/${OUTPUT_NAME}/g" \
+			       -e "s/RESPONSE_PATH/${RESPONSE_PATH}/g" \
+			       -e "s/EXPECTED_RESPONSE/${EXPECTED_RESPONSE}/g" > tasks/"$TEST_NAME_WITH_UNDERSCORES"/"$(echo $x | sed 's/no-output-//g')"
+    done
+else
+    for x in output-task.sh no-output-test.yml output-task.yml; do
+	cat templates/$x | sed -e "s/TEST_NAME_WITH_UNDERSCORES/${TEST_NAME_WITH_UNDERSCORES}/g" \
+			       -e "s/TEST_NAME/${TEST_NAME}/g" \
+			       -e "s/CC_API_SECTION/${CC_API_SECTION}/g" \
+			       -e "s#REQUEST_PATH#${REQUEST_PATH}#g" \
+			       -e "s/REQUEST_METHOD/${REQUEST_METHOD}/g" \
+			       -e "s/OUTPUT_NAME/${OUTPUT_NAME}/g" \
+			       -e "s/RESPONSE_PATH/${RESPONSE_PATH}/g" \
+			       -e "s/EXPECTED_RESPONSE/${EXPECTED_RESPONSE}/g" > tasks/"$TEST_NAME_WITH_UNDERSCORES"/"$(echo $x | sed 's/no-output-//g')"
+    done
+fi
 
 chmod +x tasks/"$TEST_NAME_WITH_UNDERSCORES"/task.sh
+
+echo -e "1. Copy pipeline task into correct step.\2. Add inputs to task.yml.\3. Check env vars in test.yml"
