@@ -177,6 +177,20 @@ jobs:
         FOUNDATION: ((FOUNDATION))
         TASK: uploads-the-bits-for-an-app
   - aggregate:
+    - task: get-detailed-stats-for-a-started-app
+      file: cc-api-tests/tasks/get_detailed_stats_for_a_started_app/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+      on_failure:
+        task: failure-notify
+        file: cc-api-tests/tasks/on_failure/task.yml
+        params:
+          PIPELINE: ((PIPELINE))
+          DATADOG_API_KEY: ((DATADOG_API_KEY))
+          FOUNDATION: ((FOUNDATION))
+          TASK: get-detailed-stats-for-a-started-app
     - task: downloads-the-bits-for-an-app
       file: cc-api-tests/tasks/downloads_the_bits_for_an_app/task.yml
       params:
