@@ -1,0 +1,6 @@
+---
+applications:
+  - memory: 128M
+    disk_quota: 100M
+    instances: 1
+    random-route: true
