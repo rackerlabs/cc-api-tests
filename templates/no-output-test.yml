@@ -3,12 +3,12 @@
     - testset: "API"
     - generators:
         - 'cf_api_url': {type: 'env_variable', variable_name: 'CF_API_URL'}
-        - 'cf_auth_token': {type: 'env_variable', variable_name: 'CF_AUTH_TOKEN'}
+        - 'auth_token': {type: 'env_variable', variable_name: 'AUTH_TOKEN'}
 
 - test:
-    - generator_binds: {cf_api_url: cf_api_url, cf_auth_token: cf_auth_token}
+    - generator_binds: {cf_api_url: cf_api_url, auth_token: auth_token}
     - name: "TEST_NAME"
     - url: {template: "https://$cf_api_urlREQUEST_PATH"}
     - method: "REQUEST_METHOD"
-    - headers: {template: {'Content-Type': 'application/json', 'Authorization': 'Bearer $cf_auth_token'}}
+    - headers: {template: {'Content-Type': 'application/json', 'Authorization': 'Bearer $auth_token'}}
     - expected_status: [EXPECTED_RESPONSE]
