@@ -13,9 +13,11 @@ resources:
     versioned_file: ((PIPELINE)).txt
     access_key_id: ((CC_API_TEST_ACCESS_KEY))
     secret_access_key: ((CC_API_TEST_SECRET_ACCESS_KEY))
-
 jobs:
 - name: setup
+  on_failure:
+  - task: cleanup
+    file: cc-api-tests/tasks/cleanup/task.yml
   serial: true
   serial_groups: [((PIPELINE))]
   plan:
@@ -120,6 +122,10 @@ jobs:
       file: cc-api-output-rollup-input/((PIPELINE)).txt
 
 - name: test
+  on_failure:
+  - task: cleanup
+    file: cc-api-tests/tasks/cleanup/task.yml
+    input_mapping: {cc-api-output-creating-an-organization: cc-api-tests-bucket}
   serial: true
   serial_groups: [((PIPELINE))]
   plan:
@@ -414,6 +420,10 @@ jobs:
       file: cc-api-output-rollup-input/((PIPELINE)).txt
 
 - name: teardown
+  on_failure:
+  - task: cleanup
+    file: cc-api-tests/tasks/cleanup/task.yml
+    input_mapping: {cc-api-output-creating-an-organization: cc-api-tests-bucket}
   serial: true
   serial_groups: [((PIPELINE))]
   plan:
