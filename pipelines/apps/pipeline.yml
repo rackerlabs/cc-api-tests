@@ -247,7 +247,7 @@ jobs:
           DATADOG_API_KEY: ((DATADOG_API_KEY))
           FOUNDATION: ((FOUNDATION))
           TASK: downloads-the-staged-droplet-for-an-app
-        - task: list-all-apps
+    - task: list-all-apps
       file: cc-api-tests/tasks/list_all_apps/task.yml
       params:
         PIPELINE: ((PIPELINE))
