@@ -9,8 +9,8 @@
 - test:
     - generator_binds: {cf_api_url: cf_api_url, auth_token: auth_token, cf_app_guid: cf_app_guid, cf_source_app_guid: cf_source_app_guid}
     - name: "copy-the-app-bits-for-an-app"
-    - url: {template: "https://$cf_api_url/v2/apps/$cf_app_guid/copy_bits"}
+    - url: {template: "https://$cf_api_url/v2/apps/$cf_source_app_guid/copy_bits"}
     - method: "POST"
-    - body: {template: '{"source_app_guid": "$cf_source_app_guid"}'}
+    - body: {template: '{"source_app_guid": "$cf_app_guid"}'}
     - headers: {template: {'Content-Type': 'application/json', 'Authorization': 'Bearer $auth_token'}}
     - expected_status: [201]
