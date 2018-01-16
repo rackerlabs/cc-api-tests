@@ -1,0 +1,15 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: quay.io/mpcf/cc-api-tests
+
+inputs:
+  - name: cc-api-output-auth
+  - name: cc-api-tests
+  - name: cc-api-output-creating-an-organization
+
+run:
+  path: cc-api-tests/tasks/cleanup/task.sh

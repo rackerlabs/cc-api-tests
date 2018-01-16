@@ -16,7 +16,7 @@ resources:
 jobs:
 - name: setup
   on_failure:
-  - task: cleanup
+    task: cleanup
     file: cc-api-tests/tasks/cleanup/task.yml
   serial: true
   serial_groups: [((PIPELINE))]
@@ -123,7 +123,7 @@ jobs:
 
 - name: test
   on_failure:
-  - task: cleanup
+    task: cleanup
     file: cc-api-tests/tasks/cleanup/task.yml
     input_mapping: {cc-api-output-creating-an-organization: cc-api-tests-bucket}
   serial: true
@@ -421,7 +421,7 @@ jobs:
 
 - name: teardown
   on_failure:
-  - task: cleanup
+    task: cleanup
     file: cc-api-tests/tasks/cleanup/task.yml
     input_mapping: {cc-api-output-creating-an-organization: cc-api-tests-bucket}
   serial: true
