@@ -8,7 +8,7 @@ image_resource:
 
 inputs:
   - name: cc-api-tests
-  - name: cc-api-tests-bucket
+  - name: cc-api-output-auth
 # Add required inputs here
 
 run:
