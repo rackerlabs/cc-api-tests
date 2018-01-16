@@ -1,0 +1,15 @@
+---
+- config:
+    - testset: "API"
+    - generators:
+        - 'cf_api_url': {type: 'env_variable', variable_name: 'CF_API_URL'}
+        - 'auth_token': {type: 'env_variable', variable_name: 'AUTH_TOKEN'}
+        - 'cf_app_guid': {type: 'env_variable', variable_name: 'CF_APP_GUID'}
+
+- test:
+    - generator_binds: {cf_api_url: cf_api_url, auth_token: auth_token, cf_app_guid: cf_app_guid}
+    - name: "downloads-the-staged-droplet-for-an-app"
+    - url: {template: "https://$cf_api_url/v2/apps/$cf_app_guid/droplet/download"}
+    - method: "GET"
+    - headers: {template: {'Content-Type': 'application/json', 'Authorization': 'Bearer $auth_token'}}
+    - expected_status: [302]

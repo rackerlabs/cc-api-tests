@@ -191,7 +191,21 @@ jobs:
           DATADOG_API_KEY: ((DATADOG_API_KEY))
           FOUNDATION: ((FOUNDATION))
           TASK: downloads-the-bits-for-an-app
-    - task: list-all-apps
+    - task: downloads-the-staged-droplet-for-an-app
+      file: cc-api-tests/tasks/downloads_the_staged_droplet_for_an_app/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+      on_failure:
+        task: failure-notify
+        file: cc-api-tests/tasks/on_failure/task.yml
+        params:
+          PIPELINE: ((PIPELINE))
+          DATADOG_API_KEY: ((DATADOG_API_KEY))
+          FOUNDATION: ((FOUNDATION))
+          TASK: downloads-the-staged-droplet-for-an-app
+        - task: list-all-apps
       file: cc-api-tests/tasks/list_all_apps/task.yml
       params:
         PIPELINE: ((PIPELINE))
