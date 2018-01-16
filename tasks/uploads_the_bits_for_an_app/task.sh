@@ -4,6 +4,8 @@ set -eu
 source cc-api-tests/util/functions.sh
 source cc-api-tests/util/read_env_vars_from_file.sh
 
+apk add zip
+
 cd cc-api-tests/fixtures/static-site
 zip -r ../../../application.zip ./
 cd -
