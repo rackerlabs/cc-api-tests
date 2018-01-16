@@ -177,6 +177,34 @@ jobs:
         FOUNDATION: ((FOUNDATION))
         TASK: uploads-the-bits-for-an-app
   - aggregate:
+    - task: get-the-instance-information-for-a-started-app
+      file: cc-api-tests/tasks/get_the_instance_information_for_a_started_app/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+      on_failure:
+        task: failure-notify
+        file: cc-api-tests/tasks/on_failure/task.yml
+        params:
+          PIPELINE: ((PIPELINE))
+          DATADOG_API_KEY: ((DATADOG_API_KEY))
+          FOUNDATION: ((FOUNDATION))
+          TASK: get-the-instance-information-for-a-started-app
+    - task: get-the-env-for-an-app
+      file: cc-api-tests/tasks/get_the_env_for_an_app/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+      on_failure:
+        task: failure-notify
+        file: cc-api-tests/tasks/on_failure/task.yml
+        params:
+          PIPELINE: ((PIPELINE))
+          DATADOG_API_KEY: ((DATADOG_API_KEY))
+          FOUNDATION: ((FOUNDATION))
+          TASK: get-the-env-for-an-app
     - task: get-detailed-stats-for-a-started-app
       file: cc-api-tests/tasks/get_detailed_stats_for_a_started_app/task.yml
       params:
@@ -319,20 +347,6 @@ jobs:
           DATADOG_API_KEY: ((DATADOG_API_KEY))
           FOUNDATION: ((FOUNDATION))
           TASK: retrieving-permissions-on-a-app
-    - task: get-the-env-for-an-app
-      file: cc-api-tests/tasks/get_the_env_for_an_app/task.yml
-      params:
-        PIPELINE: ((PIPELINE))
-        DATADOG_API_KEY: ((DATADOG_API_KEY))
-        FOUNDATION: ((FOUNDATION))
-      on_failure:
-        task: failure-notify
-        file: cc-api-tests/tasks/on_failure/task.yml
-        params:
-          PIPELINE: ((PIPELINE))
-          DATADOG_API_KEY: ((DATADOG_API_KEY))
-          FOUNDATION: ((FOUNDATION))
-          TASK: get-the-env-for-an-app
   - task: associate-route-with-the-app
     file: cc-api-tests/tasks/associate_route_with_the_app/task.yml
     params:

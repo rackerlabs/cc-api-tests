@@ -12,10 +12,10 @@ inputs:
   - name: cc-api-output-creating-an-app
 
 run:
-  path: cc-api-tests/tasks/get_the_env_for_an_app/task.sh
+  path: cc-api-tests/tasks/get_the_instance_information_for_a_started_app/task.sh
 
 params:
   PIPELINE:
   DATADOG_API_KEY:
   FOUNDATION:
-  TASK: get_the_env_for_an_app
+  TASK: get_the_instance_information_for_a_started_app
