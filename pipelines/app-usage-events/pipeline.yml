@@ -1,4 +1,7 @@
 resources:
+- name: 15m
+  type: time
+  source: {interval: 15m}
 - name: cc-api-tests
   type: git
   source:
@@ -19,6 +22,8 @@ jobs:
   serial: true
   serial_groups: [app-usage-events]
   plan:
+  - get: 15m
+    trigger: true
   - get: cc-api-tests
     trigger: true
   - task: auth
