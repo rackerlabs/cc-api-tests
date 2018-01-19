@@ -13,3 +13,6 @@ inputs:
 
 run:
   path: cc-api-tests/tasks/cleanup/task.sh
+
+params:
+  PIPELINE:

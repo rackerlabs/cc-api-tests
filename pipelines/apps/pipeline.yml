@@ -21,6 +21,8 @@ jobs:
   on_failure:
     task: cleanup
     file: cc-api-tests/tasks/cleanup/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
   serial: true
   serial_groups: [((PIPELINE))]
   plan:
@@ -131,6 +133,8 @@ jobs:
     task: cleanup
     file: cc-api-tests/tasks/cleanup/task.yml
     input_mapping: {cc-api-output-creating-an-organization: cc-api-tests-bucket}
+    params:
+      PIPELINE: ((PIPELINE))
   serial: true
   serial_groups: [((PIPELINE))]
   plan:
@@ -429,6 +433,8 @@ jobs:
     task: cleanup
     file: cc-api-tests/tasks/cleanup/task.yml
     input_mapping: {cc-api-output-creating-an-organization: cc-api-tests-bucket}
+    params:
+      PIPELINE: ((PIPELINE))
   serial: true
   serial_groups: [((PIPELINE))]
   plan:
