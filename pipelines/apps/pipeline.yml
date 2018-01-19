@@ -12,7 +12,7 @@ resources:
   type: s3
   source:
     bucket: ((BUCKET))
-    region_name: us-west-2
+    region_name: ((REGION))
     versioned_file: ((PIPELINE)).txt
     access_key_id: ((CC_API_TEST_ACCESS_KEY))
     secret_access_key: ((CC_API_TEST_SECRET_ACCESS_KEY))
