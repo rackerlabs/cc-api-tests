@@ -6,7 +6,7 @@ resources:
   type: git
   source:
     branch: master
-    private_key: ((cc_api_tests_priv_key))
+    private_key: ((GITHUB_PRIVATE_KEY))
     uri: https://github.com/rackerlabs/cc-api-tests.git
 - name: cc-api-tests-bucket
   type: s3
