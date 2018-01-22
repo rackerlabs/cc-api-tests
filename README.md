@@ -16,6 +16,20 @@ uaac member add cloud_controller.admin cc-api-tests
 uaac member add scim.write cc-api-tests
 uaac member add routing.router_groups.read cc-api-tests
 ```
+
+Alternatively, you can run the
+[bootstrap-cc-api-tests](pipelines/bootstrap-cc-api-tests/pipeline.yml)
+pipeline which will configure the UAA user for you. Before running
+this pipeline, set the following params:
+
+```
+GITHUB_PRIVATE_KEY: Required to avoid API limits when using the git resource
+CF_UAA_URI: Your UAA login uri (domain name without "https://")
+CF_UAA_ADMIN_CLIENT_SECRET: Admin secret for UAA
+CC_API_TEST_USER_PASSWORD: Password you want to give to the cc-api-tests user
+CC_API_TEST_USER_EMAIL: Email address to assign to the above user in UAA
+```
+
 ### S3 Bucket
 1. Create a bucket in an S3-compatible blob store.
 2. Enable versioning on the bucket.
