@@ -16,7 +16,7 @@ uaac target "${CF_UAA_URI}"
 uaac token client get admin -s "${CF_UAA_ADMIN_CLIENT_SECRET}"
 
 set +e
-uaac user get cc-api-tests || true
+uaac user get cc-api-tests
 
 if [ $? -eq 0 ]
 then
