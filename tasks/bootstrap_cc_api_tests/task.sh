@@ -16,13 +16,14 @@ uaac target "${CF_UAA_URI}"
 uaac token client get admin -s "${CF_UAA_ADMIN_CLIENT_SECRET}"
 
 set +e
-uaac user get cc-api-tests
-set -e
+uaac user get cc-api-tests || true
 
 if [ $? -eq 0 ]
 then
+    set -e
     echo "User already exists"
 else
+    set -e
     uaac user add cc-api-tests -p "${CC_API_TEST_USER_PASSWORD}" --emails "${CC_API_TEST_USER_EMAIL}"
 fi
 
