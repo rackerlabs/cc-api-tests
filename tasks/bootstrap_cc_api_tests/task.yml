@@ -6,6 +6,7 @@ image_resource:
   source: {repository: czero/cflinuxfs2}
 
 inputs:
+  - name: cc-api-tests
 
 run:
   path: cc-api-tests/tasks/bootstrap_cc_api_tests/task.sh
