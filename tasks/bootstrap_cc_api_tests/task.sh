@@ -7,7 +7,7 @@ add_uaac_member ()
     uaac user get cc-api-tests |grep "${1}"
     if [ $? -ne 0 ]
     then
-	uaac member "${1}" cc-api-tests
+	uaac member add "${1}" cc-api-tests
     fi
     set -e
 }
