@@ -1,0 +1,20 @@
+resources:
+- name: cc-api-tests
+  type: git
+  source:
+    branch: master
+    private_key: ((GITHUB_PRIVATE_KEY))
+    uri: https://github.com/rackerlabs/cc-api-tests.git
+
+jobs:
+- name: bootstrap-cc-api-tests
+  plan:
+  - get: cc-api-tests
+    trigger: true
+  - task: bootstrap-cc-api-tests
+    file: cc-api-tests/tasks/bootstrap_cc_api_tests/task.yml
+    params:
+      CF_UAA_URI:
+      CF_ADMIN_CLIENT_SECRET:
+      CC_API_TEST_USER_PASSWORD:
+      CC_API_TEST_USER_EMAIL:

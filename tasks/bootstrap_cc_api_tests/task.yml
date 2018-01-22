@@ -1,0 +1,17 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source: {repository: czero/cflinuxfs2}
+
+inputs:
+
+run:
+  path: cc-api-tests/tasks/bootstrap_cc_api_tests/task.sh
+
+params:
+  CF_UAA_URI:
+  CF_ADMIN_CLIENT_SECRET:
+  CC_API_TEST_USER_PASSWORD:
+  CC_API_TEST_USER_EMAIL:
