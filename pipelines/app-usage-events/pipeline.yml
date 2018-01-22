@@ -11,9 +11,9 @@ resources:
 - name: cc-api-tests-bucket
   type: s3
   source:
-    bucket: cc-api-tests.atc.bubbleup.club
+    bucket: ((BUCKET))
     region_name: ((REGION))
-    versioned_file: app-usage-events.txt
+    versioned_file: ((PIPELINE)).txt
     access_key_id: ((CC_API_TEST_ACCESS_KEY))
     secret_access_key: ((CC_API_TEST_SECRET_ACCESS_KEY))
 
