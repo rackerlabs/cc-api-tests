@@ -37,7 +37,7 @@ jobs:
       PIPELINE: ((PIPELINE))
   - put: cc-api-tests-bucket
     params:
-      file: cc-api-output-auth/app-usage-events.txt
+      file: cc-api-output-auth/((PIPELINE)).txt
 
 - name: test
   serial: true
