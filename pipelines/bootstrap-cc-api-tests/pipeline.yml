@@ -10,7 +10,6 @@ jobs:
 - name: bootstrap-cc-api-tests
   plan:
   - get: cc-api-tests
-    trigger: true
   - task: bootstrap-cc-api-tests
     file: cc-api-tests/tasks/bootstrap_cc_api_tests/task.yml
     params:
