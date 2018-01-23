@@ -434,6 +434,20 @@ jobs:
         DATADOG_API_KEY: ((DATADOG_API_KEY))
         FOUNDATION: ((FOUNDATION))
         TASK: terminate-the-running-app-instance-at-the-given-index
+  - task: uploads-the-droplet-for-an-app
+    file: cc-api-tests/tasks/uploads_the_droplet_for_an_app/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
+      DATADOG_API_KEY: ((DATADOG_API_KEY))
+      FOUNDATION: ((FOUNDATION))
+    on_failure:
+      task: failure-notify
+      file: cc-api-tests/tasks/on_failure/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+        TASK: uploads-the-droplet-for-an-app
   - task: delete-a-particular-app
     file: cc-api-tests/tasks/delete_a_particular_app/task.yml
     params:
