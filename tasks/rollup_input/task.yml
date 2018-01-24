@@ -13,6 +13,7 @@ inputs:
   - name: cc-api-output-creating-a-space
   - name: cc-api-output-creating-a-route
   - name: cc-api-output-creating-a-source-app
+  - name: cc-api-output-creating-a-user-provided-service-instance
 outputs:
   - name: cc-api-output-rollup-input
 
