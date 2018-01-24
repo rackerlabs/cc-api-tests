@@ -1,0 +1,25 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: quay.io/mpcf/cc-api-tests
+
+inputs:
+  - name: cc-api-tests
+  - name: cc-api-output-auth
+  - name: cc-api-output-creating-a-space
+
+outputs:
+  - name: cc-api-output-creating-a-user-provided-service-instance
+
+run:
+  path: cc-api-tests/tasks/creating_a_user_provided_service_instance/task.sh
+
+params:
+  PIPELINE:
+  OUTPUT: cc-api-output-creating-a-user-provided-service-instance
+  DATADOG_API_KEY:
+  FOUNDATION:
+  TASK: creating_a_user_provided_service_instance

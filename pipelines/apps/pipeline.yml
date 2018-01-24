@@ -120,6 +120,20 @@ jobs:
         DATADOG_API_KEY: ((DATADOG_API_KEY))
         FOUNDATION: ((FOUNDATION))
         TASK: creating-a-route
+  - task: creating-a-user-provided-service-instance
+    file: cc-api-tests/tasks/creating_a_user_provided_service_instance/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
+      DATADOG_API_KEY: ((DATADOG_API_KEY))
+      FOUNDATION: ((FOUNDATION))
+    on_failure:
+      task: failure-notify
+      file: cc-api-tests/tasks/on_failure/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+        TASK: creating-a-user-provided-service-instance
   - task: rollup-input
     file: cc-api-tests/tasks/rollup_input/task.yml
     params:
@@ -376,6 +390,21 @@ jobs:
           DATADOG_API_KEY: ((DATADOG_API_KEY))
           FOUNDATION: ((FOUNDATION))
           TASK: retrieving-permissions-on-a-app
+  - task: create-a-service-binding
+    file: cc-api-tests/tasks/create_a_service_binding/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
+      DATADOG_API_KEY: ((DATADOG_API_KEY))
+      FOUNDATION: ((FOUNDATION))
+    on_failure:
+      task: failure-notify
+      file: cc-api-tests/tasks/on_failure/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+        TASK: create-a-service-binding
+    input_mapping: {cc-api-output-creating-a-user-provided-service: cc-api-tests-bucket}
   - task: restage-an-app
     file: cc-api-tests/tasks/restage_an_app/task.yml
     params:
@@ -448,6 +477,20 @@ jobs:
         DATADOG_API_KEY: ((DATADOG_API_KEY))
         FOUNDATION: ((FOUNDATION))
         TASK: uploads-the-droplet-for-an-app
+  - task: remove-service-binding-from-the-app
+    file: cc-api-tests/tasks/remove_service_binding_from_the_app/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
+      DATADOG_API_KEY: ((DATADOG_API_KEY))
+      FOUNDATION: ((FOUNDATION))
+    on_failure:
+      task: failure-notify
+      file: cc-api-tests/tasks/on_failure/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+        TASK: remove-service-binding-from-the-app
   - task: delete-a-particular-app
     file: cc-api-tests/tasks/delete_a_particular_app/task.yml
     params:
@@ -534,6 +577,21 @@ jobs:
         FOUNDATION: ((FOUNDATION))
         TASK: delete-a-particular-source-app
     input_mapping: {cc-api-output-creating-a-source-app: cc-api-tests-bucket}
+  - task: delete-a-particular-user-provided-service-instance
+    file: cc-api-tests/tasks/delete_a_particular_user_provided_service_instance/task.yml
+    params:
+      PIPELINE: ((PIPELINE))
+      DATADOG_API_KEY: ((DATADOG_API_KEY))
+      FOUNDATION: ((FOUNDATION))
+    on_failure:
+      task: failure-notify
+      file: cc-api-tests/tasks/on_failure/task.yml
+      params:
+        PIPELINE: ((PIPELINE))
+        DATADOG_API_KEY: ((DATADOG_API_KEY))
+        FOUNDATION: ((FOUNDATION))
+        TASK: delete-a-particular-user-provided-service-instance
+    input_mapping: {cc-api-output-creating-a-user-provided-service-instance: cc-api-tests-bucket}
   - task: delete-a-particular-space
     file: cc-api-tests/tasks/delete_a_particular_space/task.yml
     params:

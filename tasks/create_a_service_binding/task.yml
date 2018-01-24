@@ -1,0 +1,26 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: quay.io/mpcf/cc-api-tests
+
+inputs:
+  - name: cc-api-tests
+  - name: cc-api-output-auth
+  - name: cc-api-output-creating-an-app
+  - name: cc-api-output-creating-a-user-provided-service-instance
+
+outputs:
+  - name: cc-api-output-create-a-service-binding
+
+run:
+  path: cc-api-tests/tasks/create_a_service_binding/task.sh
+
+params:
+  PIPELINE:
+  OUTPUT: cc-api-output-create-a-service-binding
+  DATADOG_API_KEY:
+  FOUNDATION:
+  TASK: create_a_service_binding

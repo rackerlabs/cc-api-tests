@@ -1,0 +1,15 @@
+---
+- config:
+    - testset: "API"
+    - generators:
+        - 'cf_api_url': {type: 'env_variable', variable_name: 'CF_API_URL'}
+        - 'auth_token': {type: 'env_variable', variable_name: 'AUTH_TOKEN'}
+        - 'cf_user_provided_service_instance_guid': {type: 'env_variable', variable_name: 'CF_USER_PROVIDED_SERVICE_INSTANCE'}
+
+- test:
+    - generator_binds: {cf_api_url: cf_api_url, auth_token: auth_token, cf_user_provided_service_instance_guid: cf_user_provided_service_instance_guid}
+    - name: "delete-a-particular-user-provided-service-instance"
+    - url: {template: "https://$cf_api_url/v2/user_provided_service_instances/$cf_user_provided_service_instance_guid"}
+    - method: "DELETE"
+    - headers: {template: {'Content-Type': 'application/json', 'Authorization': 'Bearer $auth_token'}}
+    - expected_status: [204]
