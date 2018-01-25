@@ -5,6 +5,8 @@ source cc-api-tests/util/functions.sh
 source cc-api-tests/util/read_env_vars_from_file.sh
 
 CF_ORG_NAME=${PIPELINE}-ORG
+
+echo | cf login -u ${USERNAME} -p ${PASSWORD} -a ${CF_API_URL} --skip-ssl-validation
 CF_ORGANIZATION_GUID=$(cf org ${CF_ORG_NAME} --guid)
 
 if [ !-z ${CF_ORGANIZATION_GUID} ]; then
