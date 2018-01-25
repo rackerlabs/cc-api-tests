@@ -10,7 +10,7 @@ inputs:
   - name: cc-api-tests
   - name: cc-api-output-auth
   - name: cc-api-output-creating-an-app
-  - name: cc-api-output-create-a-service-binding
+  - name: cc-api-output-creating-a-user-provided-service-instance
 
 run:
   path: cc-api-tests/tasks/delete_a_particular_user_provided_service_instance/task.sh
