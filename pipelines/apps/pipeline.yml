@@ -67,6 +67,9 @@ jobs:
     - task: creating-an-organization
       file: cc-api-tests/tasks/creating_an_organization/task.yml
       params:
+        USERNAME: ((USERNAME))
+        PASSWORD: ((PASSWORD))
+        CF_API_URL: ((CF_API_URL))
         PIPELINE: ((PIPELINE))
         DATADOG_API_KEY: ((DATADOG_API_KEY))
         FOUNDATION: ((FOUNDATION))
@@ -74,9 +77,6 @@ jobs:
         task: failure-notify
         file: cc-api-tests/tasks/on_failure/task.yml
         params:
-          USERNAME: ((USERNAME))
-          PASSWORD: ((PASSWORD))
-          CF_API_URL: ((CF_API_URL))
           PIPELINE: ((PIPELINE))
           DATADOG_API_KEY: ((DATADOG_API_KEY))
           FOUNDATION: ((FOUNDATION))
