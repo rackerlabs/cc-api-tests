@@ -21,4 +21,7 @@ params:
   OUTPUT: cc-api-output-creating-an-organization
   DATADOG_API_KEY:
   FOUNDATION:
+  USERNAME:
+  PASSWORD:
+  CF_API_URL:
   TASK: creating_an_organization
