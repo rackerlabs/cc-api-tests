@@ -404,7 +404,7 @@ jobs:
         DATADOG_API_KEY: ((DATADOG_API_KEY))
         FOUNDATION: ((FOUNDATION))
         TASK: create-a-service-binding
-    input_mapping: {cc-api-output-creating-a-user-provided-service: cc-api-tests-bucket}
+    input_mapping: {cc-api-output-creating-a-user-provided-service-instance: cc-api-tests-bucket}
   - task: restage-an-app
     file: cc-api-tests/tasks/restage_an_app/task.yml
     params:
