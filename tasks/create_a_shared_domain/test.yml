@@ -4,7 +4,7 @@
     - generators:
         - 'cf_api_url': {type: 'env_variable', variable_name: 'CF_API_URL'}
         - 'auth_token': {type: 'env_variable', variable_name: 'AUTH_TOKEN'}
-        - 'pipeline': {type: 'env_variable', variable_name: 'PIPELINE'}}
+        - 'pipeline': {type: 'env_variable', variable_name: 'PIPELINE'}
 
 - test:
     - generator_binds: {cf_api_url: cf_api_url, auth_token: auth_token, pipeline: pipeline}
