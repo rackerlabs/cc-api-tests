@@ -4,7 +4,11 @@ set -eu
 source cc-api-tests/util/functions.sh
 source cc-api-tests/util/read_env_vars_from_file.sh
 
+
 CF_ORG_NAME=${PIPELINE}-ORG
+
+curl -L "https://packages.cloudfoundry.org/stable?release=linux64-binary&source=github" | tar -zx
+mv cf /usr/local/bin
 
 echo | cf login -u ${USERNAME} -p ${PASSWORD} -a ${CF_API_URL} --skip-ssl-validation
 
