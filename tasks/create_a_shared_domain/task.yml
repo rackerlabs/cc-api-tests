@@ -17,6 +17,9 @@ run:
   path: cc-api-tests/tasks/create_a_shared_domain/task.sh
 
 params:
+  USERNAME:
+  PASSWORD:
+  CF_API_URL:
   PIPELINE:
   DATADOG_API_KEY:
   FOUNDATION:

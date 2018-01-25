@@ -53,6 +53,9 @@ jobs:
     - task: create-a-shared-domain
       file: cc-api-tests/tasks/create_a_shared_domain/task.yml
       params:
+        USERNAME: ((USERNAME))
+        PASSWORD: ((PASSWORD))
+        CF_API_URL: ((CF_API_URL))
         PIPELINE: ((PIPELINE))
         DATADOG_API_KEY: ((DATADOG_API_KEY))
         FOUNDATION: ((FOUNDATION))
