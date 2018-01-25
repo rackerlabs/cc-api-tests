@@ -9,7 +9,6 @@ image_resource:
 inputs:
   - name: cc-api-tests
   - name: cc-api-output-auth
-  - name: cc-api-output-creating-an-app
   - name: cc-api-output-creating-a-user-provided-service-instance
 
 run:
