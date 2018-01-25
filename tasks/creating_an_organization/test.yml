@@ -4,13 +4,13 @@
     - generators:
         - 'cf_api_url': {type: 'env_variable', variable_name: 'CF_API_URL'}
         - 'auth_token': {type: 'env_variable', variable_name: 'AUTH_TOKEN'}
-        - 'random_name': {type: 'random_text'}
+        - 'pipeline': {type: 'env_variable', variable_name: 'PIPELINE'}
 
 - test:
     - generator_binds: {cf_api_url: cf_api_url, auth_token: auth_token, random_name: random_name}
     - name: "creating-an-organization"
     - url: {template: "https://$cf_api_url/v2/organizations"}
     - method: "POST"
-    - body: {template: '{"name": "rackspace-test-$random_name"}'}
+    - body: {template: '{"name": "$pipeline-org"}'}
     - headers: {template: {'Content-Type': 'application/json', 'Authorization': 'Bearer $auth_token'}}
     - expected_status: [201]

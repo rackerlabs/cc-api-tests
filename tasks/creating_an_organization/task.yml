@@ -4,7 +4,8 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: quay.io/mpcf/cc-api-tests
+    repository: czero/cflinuxfs2
+
 
 inputs:
   - name: cc-api-tests
