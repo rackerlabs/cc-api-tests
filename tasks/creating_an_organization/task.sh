@@ -10,7 +10,9 @@ CF_ORG_NAME=${PIPELINE}-ORG
 curl -L "https://packages.cloudfoundry.org/stable?release=linux64-binary&source=github" | tar -zx
 mv cf /usr/local/bin
 
-echo | cf login -u ${USERNAME} -p ${PASSWORD} -a ${CF_API_URL} --skip-ssl-validation
+DECODEDPW=$(python -c "import sys, urllib as ul; print ul.unquote_plus('${PASSWORD}')")
+
+echo | cf login -u ${USERNAME} -p ${DECODEDPW} -a ${CF_API_URL} -o system --skip-ssl-validation
 
 if CF_ORGANIZATION_GUID=$(cf org ${CF_ORG_NAME} --guid); then
     curl -k -H "Authorization: bearer $AUTH_TOKEN" -X DELETE "https://$CF_API_URL/v2/organizations/$CF_ORGANIZATION_GUID?recursive=true"
