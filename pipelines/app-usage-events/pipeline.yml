@@ -5,7 +5,7 @@ resources:
 - name: cc-api-tests
   type: git
   source:
-    branch: master
+    branch: ((CC_API_TESTS_BRANCH))
     private_key: ((GITHUB_PRIVATE_KEY))
     uri: https://github.com/rackerlabs/cc-api-tests.git
 - name: cc-api-tests-bucket
